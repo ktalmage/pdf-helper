@@ -1,5 +1,13 @@
 Rails.application.routes.draw do
   
+  get 'pdfs/index'
+  get 'pdfs/new'
+  get 'pdfs/create'
+  get 'pdfs/destroy'
+  get 'files/index'
+  get 'files/new'
+  get 'files/create'
+  get 'files/destroy'
   resources :users, only: [:new, :create]
   
   get 'login', to: 'sessions#new'
