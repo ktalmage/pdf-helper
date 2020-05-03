@@ -21,5 +21,6 @@ skip_before_action :authorized, only: [:new, :create, :welcome]
   end
 
   def page_requires_login
+   redirect_to '/welcome' unless logged_in?
   end
 end
