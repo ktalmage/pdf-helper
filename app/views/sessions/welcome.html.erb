@@ -1,5 +1,9 @@
 <h1>Welcome to PDF Helper!</h1>
 
+<% if logged_in? %>
+    <h2>You are Logged In, <%= current_user.name%></h2>
+<%end%>
+
 <h2>Log In or Sign up: </h2>
 <%= button_to "Login", '/login', method: :get%><br>
 <%= button_to "Sign Up", '/users/new', method: :get%>
