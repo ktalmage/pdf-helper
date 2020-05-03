@@ -15,10 +15,10 @@ class PdfsController < ApplicationController
       @pdf.destroy
       redirect_to pdfs_path, notice:  "The PDF #{@pdf.name} has been deleted."
    end
-  end
+  
 
   private
       def pdf_params
-      params.require(:pdf).permit(:name, :attachment)
+      params.require(:pdf).permit(:name,:attachment)
    end
 end

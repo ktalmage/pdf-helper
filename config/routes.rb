@@ -9,10 +9,9 @@ Rails.application.routes.draw do
   get 'welcome', to: 'sessions#welcome'
 
   get 'authorized', to: 'sessions#page_requires_login'
+
+  resources :pdfs, only: [:index, :new, :create, :destroy]
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 end
 
-CarrierWaveExample::Application.routes.draw do
-  resources :pdfs, only: [:index, :create, :destroy]
-  root "pdfs#index"
-end
+
