@@ -3,12 +3,12 @@
       <%= flash[:notice] %>
    </div>
 <% end %>
-
+<table class = "table table-bordered table-striped">
 <ul>
 <% @pdfs.each do |pdf| %>
          
-   <ol><%= pdf.name %></td></ol><%= link_to "View File", pdf.attachment %></ol>
-   <td><%= button_to "Delete",  pdf, method: :delete, class: "btn btn-danger", confirm: "Are you sure that you wish to delete #{pdf.name}?" %></td>
+   <li><%= pdf.name %></td></ol> <%= image_tag pdf.preview(resize: "400x400") %></li>
+   <ol><%= button_to "Delete",  pdf, method: :delete %></ol>
          
          
       <% end %>
@@ -19,18 +19,4 @@
 <%= link_to "Upload a New PDF", new_pdf_path, class: "btn btn-primary" %>
 <br />
 <br />
-
-<table class = "table table-bordered table-striped">
-   <thead>
-      <tr>
-         <th>Name</th>
-         <th>Download Link</th>
-         <th> </th>
-      </tr>
-   </thead>
-   
-   <tbody>
-      
-   </tbody>
-   
 </table>

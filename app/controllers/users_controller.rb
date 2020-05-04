@@ -12,7 +12,8 @@ class UsersController < ApplicationController
       redirect_to '/welcome'
   end
 
+ 
   def user_params
-    params.require(:user).permit(:email,:password,:name)
+    params.require(:user).permit(:email,:password,:name, :pdf)
   end
 end
