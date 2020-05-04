@@ -59,4 +59,6 @@ gem 'bootstrap-sass', '~> 3.3', '>= 3.3.6'
 
 gem 'mutool'
 
+gem "aws-sdk-s3", require: false
+
 
