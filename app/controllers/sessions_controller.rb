@@ -20,6 +20,14 @@ skip_before_action :authorized, only: [:new, :create, :welcome]
   def welcome
   end
 
+  def destroy
+   if !session[:name].nil?
+      session.delete :name
+    end
+    redirect_to '/'
+  end
+  
+
   def page_requires_login
    redirect_to '/welcome' unless logged_in?
   end
