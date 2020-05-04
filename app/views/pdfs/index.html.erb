@@ -4,9 +4,19 @@
    </div>
 <% end %>
 
+<ul>
+<% @pdfs.each do |pdf| %>
+         
+   <ol><%= pdf.name %></td></ol><%= link_to "View File", pdf.attachment %></ol>
+   <td><%= button_to "Delete",  pdf, method: :delete, class: "btn btn-danger", confirm: "Are you sure that you wish to delete #{pdf.name}?" %></td>
+         
+         
+      <% end %>
+</ul>
+
 <br />
 
-<%= link_to "New Path", new_pdf_path, class: "btn btn-primary" %>
+<%= link_to "Upload a New PDF", new_pdf_path, class: "btn btn-primary" %>
 <br />
 <br />
 
@@ -20,15 +30,7 @@
    </thead>
    
    <tbody>
-      <% @pdfs.each do |pdf| %>
-         
-         <tr>
-            <td><%= pdf.name %></td>
-            <td><%= link_to "Download pdf", pdf.attachment_url %></td>
-            <td><%= button_to "Delete",  pdf, method: :delete, class: "btn btn-danger", confirm: "Are you sure that you wish to delete #{pdf.name}?" %></td>
-         </tr>
-         
-      <% end %>
+      
    </tbody>
    
 </table>

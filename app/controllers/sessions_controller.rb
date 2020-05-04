@@ -8,7 +8,7 @@ skip_before_action :authorized, only: [:new, :create, :welcome]
     @user = User.find_by(email: params[:email])
    if @user && @user.authenticate(params[:password])
       session[:user_id] = @user.id
-      redirect_to '/welcome'
+     redirect_to '/welcome'
    else
       redirect_to '/login'
    end

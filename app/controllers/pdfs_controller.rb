@@ -8,6 +8,9 @@ class PdfsController < ApplicationController
   end
 
   def create
+    @pdf = Pdf.create(pdf_params)
+    @pdf.save
+    redirect_to pdfs_path, notice: "The file #{@pdf.name} has been uploaded."
   end
 
   def destroy
