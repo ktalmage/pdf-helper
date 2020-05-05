@@ -7,7 +7,7 @@
 <ul>
 <% @pdfs.each do |pdf| %>
          
-   <li> <%= pdf.name %> <%= link_to "View K-1 Document" , pdf %></li>
+   <li> <%= pdf.name %> <%= link_to "View K-1 Document", pdf %></li>
    <ol><%= button_to "Delete",  pdf, method: :delete %></ol>
          
          

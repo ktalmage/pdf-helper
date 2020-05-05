@@ -3,6 +3,10 @@ class PdfsController < ApplicationController
     @pdfs = Pdf.all
   end
 
+  def show
+    @pdf = Pdf.find(params[:id])
+  end
+
   def new
     @pdf = Pdf.new
   end
