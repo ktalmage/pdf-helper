@@ -21,8 +21,8 @@ skip_before_action :authorized, only: [:new, :create, :welcome]
   end
 
   def destroy
-   if !session[:name].nil?
-      session.delete :name
+   if !session[:user_id].nil?
+      session.delete :user_id
     end
     redirect_to '/'
   end
