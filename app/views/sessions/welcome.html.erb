@@ -1,8 +1,7 @@
 <h1>Welcome to PDF Helper!</h1>
 
 <% if logged_in? %>
-    <h2>Hi, <%= current_user.name%>. You are logged in.</h2>
-    <p> <%= link_to "Upload a PDF Document:", new_pdf_path, class: "btn btn-primary" %></p>
+    <h2>Hi, <%= current_user.name%>.</h2>
     <%= button_to "Logout", '/logout', method: :post%>
     
 <% else%>

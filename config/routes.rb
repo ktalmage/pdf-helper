@@ -12,7 +12,7 @@ Rails.application.routes.draw do
 
   get 'authorized', to: 'sessions#page_requires_login'
 
-  resources :pdfs, only: [:index, :show, :new, :create, :destroy]
+  
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 end
 
