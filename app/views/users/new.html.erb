@@ -2,9 +2,12 @@
 <%= form_for @user do |f|%>
   <%= f.label :email%><br>
   <%= f.text_field :email%><br>
+  </p>
   <%= f.label :name%><br>
   <%= f.text_field :name%><br>
+  <p>
   <%= f.label :password%><br>
   <%= f.password_field :password%><br>
+  </p>
   <%= f.submit %>
 <%end%>
