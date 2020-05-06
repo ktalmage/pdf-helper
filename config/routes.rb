@@ -1,5 +1,8 @@
 Rails.application.routes.draw do
   
+  get 'clients/new'
+  get 'clients/index'
+  get 'clients/show'
   resources :users, only: [:new, :create]
   
   get 'login', to: 'sessions#new'
