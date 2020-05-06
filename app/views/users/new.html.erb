@@ -13,7 +13,7 @@
 
 <%= form_for @user do |f|%>
   <%= f.label :email%><br>
-  <%= f.text_field :email%><br>
+  <%= f.email_field :email, :required=> true %><br>
   </p>
   <%= f.label :name%><br>
   <%= f.text_field :name%><br>

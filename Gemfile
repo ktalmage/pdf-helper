@@ -68,3 +68,5 @@ gem 'mini_magick'
 
 
 
+
+
