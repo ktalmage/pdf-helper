@@ -1,0 +1,19 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  name: MyString
+  ein: 1
+  ordinary_income: 9.99
+  interest_income: 9.99
+  st_cap: 9.99
+  mt_capital: 9.99
+  lt_capital: 9.99
+
+two:
+  name: MyString
+  ein: 1
+  ordinary_income: 9.99
+  interest_income: 9.99
+  st_cap: 9.99
+  mt_capital: 9.99
+  lt_capital: 9.99
