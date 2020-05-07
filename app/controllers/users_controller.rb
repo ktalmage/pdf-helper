@@ -1,5 +1,5 @@
 class UsersController < ApplicationController
-has_one_attached :file
+
   skip_before_action :authorized, only: [:new, :create]
   
   def new

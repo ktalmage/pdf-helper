@@ -1,8 +1,5 @@
 class ClientsController < ApplicationController
-  def show
-    @client = Client.find(params[:id])
-  end
-
+  before_action :set_client, only: [:show, :edit, :destroy]
   def index
     @clients = Client.all
   end
@@ -11,10 +8,19 @@ class ClientsController < ApplicationController
     @client = Client.new
   end
 
+  def show
+  end
+
+  def edit
+  end
+
   def create
     @client = Client.new(client_params)
-    @client.save
+    if @client.save
     redirect_to @client
+    else
+      render :new
+    end
   end
 
   def destroy
@@ -22,7 +28,11 @@ class ClientsController < ApplicationController
 
   private
 
+  def set_client
+    @client = Client.find(params[:id])
+  end
+
   def client_params
     params.require(:client).permit(:name,:ein)
-end
+  end
 end
