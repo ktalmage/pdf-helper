@@ -1,8 +1,11 @@
 <h1>Welcome to PDF Helper!</h1>
+<h2>An accounting site for client and investment tracking</h2>
 
 <% if logged_in? %>
-    <h2>Hi, <%= current_user.name%>.</h2>
-    <%= link_to "Add new client", new_client_path %>
+    <h3>Hi, <%= current_user.name%>.You are certainly logged in!</h3>
+    <%= link_to "Add Client", new_client_path %>
+    <br>
+    <br>
     <%= button_to "Logout", '/logout', method: :post%>
     
 <% else%>

@@ -24,7 +24,7 @@ skip_before_action :authorized, only: [:new, :create, :welcome]
    if !session[:user_id].nil?
       session.delete :user_id
     end
-    redirect_to '/'
+    redirect_to '/welcome'
   end
   
 
