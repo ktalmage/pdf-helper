@@ -1,5 +1,5 @@
 class UsersController < ApplicationController
-
+has_one_attached :file
   skip_before_action :authorized, only: [:new, :create]
   
   def new
@@ -19,6 +19,6 @@ class UsersController < ApplicationController
 
  
   def user_params
-    params.require(:user).permit(:email,:password,:name)
+    params.require(:user).permit(:email,:password,:name, :file)
   end
 end
