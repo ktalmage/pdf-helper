@@ -3,15 +3,12 @@ class ClientsController < ApplicationController
   def index
     @clients = Client.all
   end
-
-  def new
-    @client = Client.new
-  end
-
+  
   def show
   end
 
-  def edit
+  def new
+    @client = Client.new
   end
 
   def create
@@ -23,7 +20,22 @@ class ClientsController < ApplicationController
     end
   end
 
+  def edit
+  end
+
+  def update
+    @client.update(client_params)
+    if @client.save
+      redirect_to @client
+    else
+      render :edit
+    end
+  end
+
   def destroy
+    @client.destroy
+    flash[:notice] = "Client deleted."
+    redirect_to clients_path
   end
 
   private

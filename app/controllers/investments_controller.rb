@@ -1,6 +1,6 @@
 class InvestmentsController < ApplicationController
+    before_action :set_investment, only: [:show, :edit, :destroy]
     def show
-        @investment = Investment.find(params[:id])
     end
 
     def index
@@ -17,13 +17,30 @@ class InvestmentsController < ApplicationController
         
     end
 
+    def edit
+    end
+
     def update
+        @investment.update(investment_params)
+        if @investment.save
+          redirect_to @investment
+        else
+          render :edit
+        end
+      end
     end
     
     def destroy
+        @investment.destroy
+        flash[:notice] = "Investment deleted."
+        redirect_to investments_path
     end
 
     private
+
+    def set_investment
+        @investment = Investment.find(params[:id])
+    end
 
     def investment_params
         params.require(:investment).permit(:name,:ein,:ordinary_income,:interest_income,
