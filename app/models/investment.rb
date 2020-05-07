@@ -3,6 +3,8 @@ class Investment < ApplicationRecord
     belongs_to :client
     belongs_to :user
 
+    scope :long_names, -> {where ("LENGTH(name) > 10")}
+
     include Rails.application.routes.url_helpers
 
     def my_url

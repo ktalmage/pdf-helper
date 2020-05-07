@@ -4,7 +4,7 @@ class InvestmentsController < ApplicationController
     end
 
     def index
-        @investments = Investment.all
+        @investments = Investment.long_names
     end
 
     def new

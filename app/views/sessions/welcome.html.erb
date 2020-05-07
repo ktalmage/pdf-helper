@@ -2,7 +2,7 @@
 
 <% if logged_in? %>
     <h2>Hi, <%= current_user.name%>.</h2>
-    <%= link_to "Add new client", clients_new_path %>
+    <%= link_to "Add new client", new_client_path %>
     <%= button_to "Logout", '/logout', method: :post%>
     
 <% else%>
