@@ -1,5 +1,6 @@
 class ClientsController < ApplicationController
   before_action :set_client, only: [:show, :edit, :destroy]
+  before_action :authorized
   def index
     @clients = Client.all
   end
