@@ -13,7 +13,8 @@ class ClientsController < ApplicationController
 
   def create
     @client = Client.new(client_params)
-    if @client.save
+    if @client.valid? && current_user
+      @client.save
     redirect_to @client
     else
       render :new
@@ -24,8 +25,10 @@ class ClientsController < ApplicationController
   end
 
   def update
+    set_client
     @client.update(client_params)
-    if @client.save
+      if @client.valid? && current_user
+      @client.save
       redirect_to @client
     else
       render :edit

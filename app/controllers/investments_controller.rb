@@ -5,20 +5,21 @@ class InvestmentsController < ApplicationController
 
     def index
         @investments = Investment.all
+        
     end
 
     def new
-        @investment = Investment.new
+        @investment = Investment.new(client_id: params[:client_id])
+        
     end
 
     def create
         @investment = Investment.new(investment_params)
-        if current_user
+        if @user.valid?
             @investment.save
             redirect_to investments_path
         else
-            
-            
+            redirect_to :login
         end
     end
 
@@ -27,7 +28,7 @@ class InvestmentsController < ApplicationController
 
     def update
         @investment.update(investment_params)
-        if current_user
+        if @user.valid?
             @investment.save
           redirect_to investments_path
         else
