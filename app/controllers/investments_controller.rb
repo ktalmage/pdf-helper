@@ -74,6 +74,6 @@ class InvestmentsController < ApplicationController
     end
 
     def investment_params
-        params.require(:investment).permit(:name,:ein,:ordinary_income,:interest_income,:st_capital,:mt_capital,:lt_capital,:user_id,:client_id,:file)
+        params.require(:investment).permit(:name,:ein,:ordinary_income,:interest_income,:st_capital,:mt_capital,:lt_capital,:client_id,:file)
     end
 end
