@@ -21,7 +21,7 @@ tr:nth-child(even) {
 </head>
 <body>
 
-<h2>Client Investments</h2>
+<h2>Client Investments:</h2>
 
 <table>
   <tr>
@@ -39,16 +39,13 @@ tr:nth-child(even) {
     <td>client</td> 
     <td><%=@investment.name%></td>
     <td><%=@investment.ein%></td>
-    <td><%=@investment.ordinary_income%></td>
-    <td><%=@investment.interest_income%></td>
-    <td><%=@investment.st_capital%></td>
-    <td><%=@investment.mt_capital%></td>
-    <td><%=@investment.lt_capital%></td>
-    <td><%=@investment.total%></td>
+    <td><%=number_to_currency(@investment.ordinary_income, :unit => "$")%></td>
+    <td><%=number_to_currency(@investment.interest_income, :unit=> "$")%></td>
+    <td><%=number_to_currency(@investment.st_capital,:unit => "$") %></td>
+    <td><%=number_to_currency(@investment.mt_capital, :unit => "$")%></td>
+    <td><%=number_to_currency(@investment.lt_capital, :unit=> "$")%></td>
+    <td><%=number_to_currency(@investment.total, :unit => "$")%></td>
   </tr>
   
-
-<%# <h1><%=@investment.name %></h1>
-
-<%# <%= link_to 'View file', url_for(@investment.file) %>
+<%= link_to 'Welcome Page', welcome_path %>
 
