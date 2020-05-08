@@ -19,17 +19,25 @@ class InvestmentsController < ApplicationController
     end
 
     def new
-        @investment = Investment.new(client_id: params[:client_id])
-        
+        if params[:client_id]
+            set_client_inv
+            @investment = @client.investments.build
+        else
+            @investment = Investment.new
+        end
     end
 
     def create
-        @investment = Investment.new(investment_params)
-        if @user.valid?
-            @investment.save
+        if params[:client_id]
+            set_client_inv
+        @investment = @client.investments.build(investment_params)
+        else
+            @investment = Investment.new(investment_params)
+        end
+        if @investment.save
             redirect_to investments_path
         else
-            redirect_to :login
+            render :new, alert: "Error saving this investment"
         end
     end
 
