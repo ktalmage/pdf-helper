@@ -22,7 +22,7 @@ tr:nth-child(even) {
 <body>
 
 <h2>Client Investments:</h2>
-
+<p><%= link_to 'Welcome Page', welcome_path %></p>
 <table>
   <tr>
     <th>Client</th>
@@ -46,6 +46,8 @@ tr:nth-child(even) {
     <td><%=number_to_currency(@investment.lt_capital, :unit=> "$")%></td>
     <td><%=number_to_currency(@investment.total, :unit => "$")%></td>
   </tr>
-  
-<%= link_to 'Welcome Page', welcome_path %>
+  <br>
 
+
+<%# <iframe src=<%= url_for(@investment.my_file.file) %>
+ <%# width="700" height="780" style="border: none;"></iframe> %> 
