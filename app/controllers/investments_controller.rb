@@ -1,11 +1,21 @@
 class InvestmentsController < ApplicationController
     before_action :set_investment, only: [:show, :edit, :update, :destroy]
-    def show
-    end
+    
 
     def index
-        @investments = Investment.all
-        
+        if params[:client_id]
+            @investment = set_client_inv
+            @investments = @client.investments
+        else
+            @investments = Investment.all
+        end
+    end
+
+    def show
+        set_investment
+        if params[:client_id]
+            set_client_inv
+        end
     end
 
     def new
@@ -48,6 +58,10 @@ class InvestmentsController < ApplicationController
 
     def set_investment
         @investment = Investment.find(params[:id])
+    end
+
+    def set_client_inv
+        @client = Client.find_by_id(params[:client_id])
     end
 
     def investment_params

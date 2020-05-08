@@ -3,4 +3,6 @@
 <p><%= @client.ein %></p>
 
 <h2>Client's Investments</h2>
-<% @client.investments.each%>
+<% @client.investments.each do |investment|%> 
+    <div><%= investment.name%></div>
+    <% end %>
