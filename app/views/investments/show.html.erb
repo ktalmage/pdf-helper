@@ -1,3 +1,54 @@
-<h1><%=@investment.name %></h1>
-<%= link_to 'View file', url_for(@investment.file) %>
+<!DOCTYPE html>
+<html>
+<head>
+<style>
+table {
+  font-family: arial, sans-serif;
+  border-collapse: collapse;
+  width: 80%;
+}
+
+td, th {
+  border: 1px solid #dddddd;
+  text-align: center;
+  padding: 8px;
+}
+
+tr:nth-child(even) {
+  background-color: #dddddd;
+}
+</style>
+</head>
+<body>
+
+<h2>Client Investments</h2>
+
+<table>
+  <tr>
+    <th>Client</th>
+    <th>Investment</th>
+    <th>EIN</th>
+    <th>Ordinary Income</th>
+    <th>Interest Income</th>
+    <th>Short-Term Capital Gains/(Losses)</th>
+    <th>Mid-Term Capital Gains/(Losses)</th>
+    <th>Long-Term Capital Gains/(Losses)</th>
+    <th>Total Income</th>
+  </tr>
+  <tr>
+    <td>client</td> 
+    <td><%=@investment.name%></td>
+    <td><%=@investment.ein%></td>
+    <td><%=@investment.ordinary_income%></td>
+    <td><%=@investment.interest_income%></td>
+    <td><%=@investment.st_capital%></td>
+    <td><%=@investment.mt_capital%></td>
+    <td><%=@investment.lt_capital%></td>
+    <td><%=@investment.total%></td>
+  </tr>
+  
+
+<%# <h1><%=@investment.name %></h1>
+
+<%# <%= link_to 'View file', url_for(@investment.file) %>
 

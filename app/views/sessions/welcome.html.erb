@@ -1,7 +1,7 @@
 <h1>Welcome to PDF Helper!</h1>
 <h2>An accounting site for client and investment tracking</h2>
 
-<% if logged_in? %>
+<% if logged_in?  %>
     <h3>Hi, <%= current_user.name%>.You are certainly logged in!</h3>
     <%= link_to "Add Client", new_client_path %>
     <br>

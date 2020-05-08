@@ -3,12 +3,17 @@ class Investment < ApplicationRecord
     belongs_to :client
     belongs_to :user
 
-    scope :long_names, -> {where ("LENGTH(name) > 10")}
+    scope :ein_count, -> {where ("COUNT(EIN) == 9")}
+    # scope :total_income, -> 
 
     include Rails.application.routes.url_helpers
 
-    def my_url
-        rails_blob_path(@investment.file, disposition: "attachment")
+    def total
+        Investment.where(:id=>self.id).pluck("SUM(ordinary_income)","SUM(interest_income)").to_s
     end
+
+    # def my_url
+    #     rails_blob_path(@investment.file, disposition: "attachment")
+    # end
     
 end

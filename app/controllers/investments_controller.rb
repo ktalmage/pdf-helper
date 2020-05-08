@@ -1,10 +1,10 @@
 class InvestmentsController < ApplicationController
-    before_action :set_investment, only: [:show, :edit, :destroy]
+    before_action :set_investment, only: [:show, :edit, :update, :destroy]
     def show
     end
 
     def index
-        @investments = Investment.long_names
+        @investments = Investment.all
     end
 
     def new
@@ -13,8 +13,13 @@ class InvestmentsController < ApplicationController
 
     def create
         @investment = Investment.new(investment_params)
-        @investment.save
-        
+        if current_user
+            @investment.save
+            redirect_to investments_path
+        else
+            
+            
+        end
     end
 
     def edit
@@ -22,10 +27,12 @@ class InvestmentsController < ApplicationController
 
     def update
         @investment.update(investment_params)
-        if @investment.save
-          redirect_to @investment
+        if current_user
+            @investment.save
+          redirect_to investments_path
         else
-          render :edit
+            flash[:alert] =  "You do not have access to this. Please login"
+            redirect_to :login
         end
       end
     
