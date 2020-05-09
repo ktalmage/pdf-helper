@@ -14,7 +14,7 @@
    <%= link_to_unless_current "Welcome", welcome_path %>
    <section class="utility">
    <% if logged_in?%>
-   You are logged in as: <%= current_user.name %> 
+   You are logged in as: <%= current_user.name %> - <%= current_user.email %>
    <% else %>
    <%= link_to_unless_current "Login", login_path %>
    <%= link_to_unless_current "Signup", new_user_path %>
