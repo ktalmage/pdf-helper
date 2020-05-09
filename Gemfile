@@ -64,7 +64,7 @@ gem "aws-sdk-s3", require: false
 gem 'mini_magick'
 
 # authentication
-gem 'omniauth'
+gem "omniauth-github", '1.1.1'
 
 
 
