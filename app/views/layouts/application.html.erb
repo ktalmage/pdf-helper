@@ -9,6 +9,19 @@
    </head>
    
    <body>
+   <nav>
+   <section>
+   <%= link_to_unless_current "Welcome", welcome_path %>
+   <section class="utility">
+   <% if session[:current_user_id] %>
+   You are logged in as: <%= @current_user.name %> | <a href="/logout">Logout</a>
+   <% else %>
+   <%= link_to_unless_current "Login", login_path %>
+   <%= link_to_unless_current "Signup", new_user_path %>
+   <% end %>
+   </section>
+   </nav>
+
       <div class = "container" style = "padding-top:20px;">
          <%= yield %>
       </div>
