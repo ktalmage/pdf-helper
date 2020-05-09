@@ -3,7 +3,7 @@
 
 <% if logged_in?  %>
     <h3>Hi, <%= current_user.name%>.You are certainly logged in!</h3>
-    <%= link_to "View my Clients", clients_path %><br>
+    <%= link_to "View my Clients", client_investments_path %><br>
     <%= link_to "Add Client", new_client_path %><br>
     <%= link_to "Add Investment", new_investment_path %>
     <br>
