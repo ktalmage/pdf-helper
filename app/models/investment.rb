@@ -16,7 +16,7 @@ class Investment < ApplicationRecord
     
 
     scope :ein_count, -> {where ("COUNT(EIN) == 9")}
-    # scope :total_income, -> 
+    
 
     include Rails.application.routes.url_helpers
 
