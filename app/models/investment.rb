@@ -1,4 +1,6 @@
 class Investment < ApplicationRecord
+    belongs_to :user
+    belongs_to :client
     validates :name, uniqueness: true
     validates :ordinary_income, numericality: true
     validates :interest_income, numericality: true
@@ -10,10 +12,8 @@ class Investment < ApplicationRecord
     validates_presence_of :st_capital
     validates_presence_of :mt_capital
     validates_presence_of :lt_capital
-    
     has_one_attached :file
-    belongs_to :client
-    belongs_to :user
+    
 
     scope :ein_count, -> {where ("COUNT(EIN) == 9")}
     # scope :total_income, -> 

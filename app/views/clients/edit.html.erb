@@ -9,10 +9,12 @@
     </ul>
   </div>
 <% end %>
+<% if logged_in? %>
 <%= form_for @client do |f| %>
 <%= f.label :name %>
 <%= f.text_field :name %><br>
 <%= f.label :ein %>
 <%= f.number_field :ein %>
 <%= f.submit %>
+<% end %>
 <% end %>

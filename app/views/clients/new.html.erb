@@ -1,3 +1,4 @@
+<% if logged_in? %>
 <h1>Hi, <%= current_user.name %> Add a Client: </h1>
 <%= form_for @client do |f| %>
 <%= f.label :name %>
@@ -5,5 +6,6 @@
 <%= f.label :ein %>
 <%= f.number_field :ein %>
 <%= f.submit %>
+<% end %>
 <% end %>
 

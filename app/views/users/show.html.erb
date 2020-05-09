@@ -1,4 +1,7 @@
 <% if logged_in? %>
 <h1>Hi, <%= current_user.name %> </h1>
-<%= link_to "clients", client_investments_path %>
+<h2>Here are your current clients: </h2>
+<% @user.clients.each do |client| %>
+    <%= link_to client.name, client_path(client) %> 
+    <% end %>
 <% end %>
