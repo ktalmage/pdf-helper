@@ -4,7 +4,7 @@ Rails.application.routes.draw do
     resources :investments, only: [:show, :index]
   end
  
-  resources :users, only: [:new, :create]
+  resources :users, only: [:show,:new, :create ]
   
   get 'login', to: 'sessions#new'
 
@@ -18,7 +18,7 @@ Rails.application.routes.draw do
 
   resources :investments
 
-  get '/', to: 'main#home'
+  root to: 'main#home'
  
   
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
