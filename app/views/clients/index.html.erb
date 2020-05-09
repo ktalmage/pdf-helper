@@ -23,7 +23,7 @@ tr:nth-child(even) {
     <th>EIN</th>
   </tr>
   
-<% @user.clients.each do |client| %>
+<% @clients.each do |client| %>
   <tr>
   <td><%= link_to "#{client.name}", client_path(client) %></td>
   <td><%= client.ein %></td>

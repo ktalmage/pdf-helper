@@ -1,12 +1,21 @@
 class ClientsController < ApplicationController
   before_action :set_client, only: [:show, :edit, :destroy]
   before_action :authorized
+  
   def index
+   if params[:user_id]
+    set_user
+    @clients = @user.clients
+   else
     @clients = Client.all
-    
+   end 
   end
   
   def show
+    set_client
+    if params[:user_id]
+      set_user
+    end
   end
 
   def new
@@ -45,6 +54,9 @@ class ClientsController < ApplicationController
 
   private
 
+  def set_user
+    @user = User.find(params[:id])
+  end
   def set_client
     @client = Client.find(params[:id])
   end
