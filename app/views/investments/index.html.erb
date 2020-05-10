@@ -1,4 +1,4 @@
 <h1>Investments </h1>
 <% @investments.each do |investment| %>
-  <div><%= investment.name %></div>
+  <div><%= link_to "#{investment.name}", investment_path(investment) %>></div>
 <% end %>

@@ -15,6 +15,7 @@ class ClientsController < ApplicationController
     set_client
     if params[:user_id]
       set_user
+      
     end
   end
 

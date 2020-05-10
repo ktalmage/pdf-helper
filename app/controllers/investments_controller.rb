@@ -21,7 +21,7 @@ class InvestmentsController < ApplicationController
 
     def new
         if params[:client_id]
-            set_client_inv
+            set_investment
             @investment = @client.investments.build
         else
             @investment = Investment.new
@@ -64,6 +64,8 @@ class InvestmentsController < ApplicationController
     end
 
     private
+
+    
 
     def set_investment
         @investment = Investment.find(params[:id])

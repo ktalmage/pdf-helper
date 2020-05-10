@@ -2,7 +2,9 @@
 <p><%= @client.name %></p>
 <p><%= @client.ein %></p>
 
+<p> <%= link_to("Edit", edit_client_path(@client)) %></p>
+<p> <%= link_to("Delete", @client, method: :delete, data:{confirm: "Are you Sure?"}) %></p>
+
 <h2>Client's Investments</h2>
-<% @client.investments.each do |investment|%> 
-    <div><%= investment.name%></div>
-    <% end %>
+
+    
