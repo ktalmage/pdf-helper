@@ -1,0 +1,19 @@
+<h1>Hi, <%= current_user.name %> Edit a Client: </h1>
+<% if @client.errors.any? %>
+  <div id="error_explanation">
+    <h2 style="color: red;"><%= pluralize(@client.errors.count, "error") %> prohibited you from editing this client:</h2>
+    <ul>
+    <% @client.errors.full_messages.each do |msg| %>
+     <h3 style="color: red;"><li><%= msg %></li></h3>
+    <% end %>
+    </ul>
+  </div>
+<% end %>
+
+<%= form_for @client do |f| %>
+<%= f.label :name %>
+<%= f.text_field :name %><br>
+<%= f.label :ein %>
+<%= f.number_field :ein %>
+<%= f.submit %>
+<% end %>

@@ -23,6 +23,7 @@ class InvestmentsController < ApplicationController
         if params[:client_id]
             set_investment
             @investment = @client.investments.build
+            
         else
             @investment = Investment.new
         end
@@ -47,6 +48,9 @@ class InvestmentsController < ApplicationController
 
     def update
         @investment.update(investment_params)
+        if @investment.errors.any?
+            render :edit
+        else
         if @investment.valid?
             @investment.save
           redirect_to investments_path
@@ -55,6 +59,7 @@ class InvestmentsController < ApplicationController
             redirect_to :login
         end
       end
+    end
     
     
     def destroy
