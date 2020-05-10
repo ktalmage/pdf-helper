@@ -1,6 +1,6 @@
 <h1>Edit Investment: </h1>
 
-<% if @user.errors.any? %>
+<% if @investment.errors.any? %>
   <div id="error_explanation">
     <h2 style="color: red;"><%= pluralize(@user.errors.count, "error") %> prohibited this investment from being updated:</h2>
     <ul>
