@@ -14,7 +14,8 @@ class ClientsController < ApplicationController
   def show
     set_client
     if params[:user_id]
-      set_user
+      @clients = @client.investments
+      
       
     end
   end
