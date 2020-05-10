@@ -6,9 +6,5 @@
 <p> <%= link_to("Delete", @client, method: :delete, data:{confirm: "Are you Sure?"}) %></p>
 
 <h2>Client's Investments</h2>
-<% @client.investments.each do |investment| %>
-    <%=investment.name %>
-    <% end %>
 
-
-    
+ <%= link_to("Investment", investments_path(@investment)) %>
