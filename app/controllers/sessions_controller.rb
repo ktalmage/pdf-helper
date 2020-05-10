@@ -6,14 +6,34 @@ skip_before_action :authorized, only: [:new, :create, :welcome]
   end
 
   def create
-   find_by
-   if @user && @user.authenticate(params[:password])
-      session[:user_id] = @user.id
-     redirect_to '/welcome'
-   else
-    redirect_to '/login' 
-  end
-  end
+    if auth_hash = request.env["omniauth.auth"]
+      
+      oauth_email = request.env["omniauth.auth"]["info"]["email"]
+      if @user = User.find_by(:email => oauth_email)
+        session[:user_id] = @user.id
+        redirect_to '/welcome'
+      else
+        @user = User.new(:email => oauth_email)
+        if @user.save
+        session[:user_id] = @user.id
+        redirect_to '/welcome'
+        else
+          raise.user.errors.full_messages.inspect
+          end
+          end
+      else
+      find_by
+      if @user && @user.authenticate(params[:password])
+        session[:user_id] = @user.id
+        redirect_to '/welcome'
+      else
+        redirect_to '/login' 
+      end
+    end
+    
+  
+  
+
 
   def login
   
@@ -38,4 +58,5 @@ skip_before_action :authorized, only: [:new, :create, :welcome]
   def find_by
     @user = User.find_by(email: params[:email])
   end
+end
 end

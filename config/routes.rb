@@ -14,6 +14,8 @@ Rails.application.routes.draw do
 
   post '/logout', to: 'sessions#destroy'
 
+  get '/auth/:provider/callback', to: 'sessions#create'
+
   get 'authorized', to: 'sessions#page_requires_login'
 
   resources :investments
