@@ -25,7 +25,6 @@ tr:nth-child(even) {
 <p><%= link_to 'Welcome Page', welcome_path %></p>
 <table>
   <tr>
-    <th>Client</th>
     <th>Investment</th>
     <th>EIN</th>
     <th>Ordinary Income</th>
@@ -38,7 +37,6 @@ tr:nth-child(even) {
     <th>Delete</th>
   </tr>
   <tr>
-    <td>client</td> 
     <td><%=@investment.name%></td>
     <td><%=@investment.ein%></td>
     <td><%=number_to_currency(@investment.ordinary_income, :unit => "$")%></td>

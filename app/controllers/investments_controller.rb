@@ -5,7 +5,7 @@ class InvestmentsController < ApplicationController
 
     def index
         if params[:client_id]
-            @investment = set_client_inv
+            @client = Client.find_by_id(params[:client_id])
             @investments = @client.investments
         else
             @investments = Investment.all
@@ -15,15 +15,15 @@ class InvestmentsController < ApplicationController
     def show
         set_investment
         if params[:client_id]
-            set_client_inv
+           
+            @client = Client.find_by_id(params[:client_id])
         end
     end
 
     def new
         if params[:client_id]
-            set_investment
-            @investment = @client.investments.build
-            
+         set_client_inv
+         @investment = @user.investments.build
         else
             @investment = Investment.new
         end
@@ -37,9 +37,9 @@ class InvestmentsController < ApplicationController
             @investment = Investment.new(investment_params)
         end
         if @investment.save
-            redirect_to investments_path
+            redirect_to @investment
         else
-            render :new, alert: "Error saving this investment"
+            render :new, alert: "Error creating investment"
         end
     end
 
@@ -73,14 +73,14 @@ class InvestmentsController < ApplicationController
     
 
     def set_investment
-        @investment = Investment.find(params[:id])
+        @investment = Investment.find_by_id(params[:id])
     end
 
     def set_client_inv
-        @client = Client.find_by_id(params[:client_id])
+       @client = Client.find_by_id(params[:id])
     end
 
     def investment_params
-        params.require(:investment).permit(:name,:ein,:ordinary_income,:interest_income,:st_capital,:mt_capital,:lt_capital,:user_id,:client_id,:file)
+        params.require(:investment).permit(:name,:ein,:ordinary_income,:interest_income,:st_capital,:mt_capital,:lt_capital,:user_id,:client_id)
     end
 end

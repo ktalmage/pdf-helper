@@ -3,7 +3,7 @@ class ClientsController < ApplicationController
   before_action :authorized
   
   def index
-   if params[:user_id]
+  if params[:user_id]
     set_user
     @clients = @user.clients
    else

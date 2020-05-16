@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_05_16_143433) do
+ActiveRecord::Schema.define(version: 2020_05_16_161509) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -19,21 +19,18 @@ ActiveRecord::Schema.define(version: 2020_05_16_143433) do
     t.string "name"
     t.string "ein"
     t.integer "user_id"
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
   end
 
-  create_table "invesments", force: :cascade do |t|
-    t.bigint "user_id"
-    t.bigint "client_id"
+  create_table "investments", force: :cascade do |t|
+    t.string "name"
     t.string "ein"
     t.decimal "ordinary_income"
     t.decimal "interest_income"
     t.decimal "st_capital"
     t.decimal "mt_capital"
     t.decimal "lt_capital"
-    t.index ["client_id"], name: "index_invesments_on_client_id"
-    t.index ["user_id"], name: "index_invesments_on_user_id"
+    t.integer "user_id"
+    t.integer "client_id"
   end
 
   create_table "users", force: :cascade do |t|
@@ -44,6 +41,4 @@ ActiveRecord::Schema.define(version: 2020_05_16_143433) do
     t.datetime "updated_at", precision: 6, null: false
   end
 
-  add_foreign_key "invesments", "clients"
-  add_foreign_key "invesments", "users"
 end

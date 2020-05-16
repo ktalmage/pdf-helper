@@ -12,7 +12,7 @@ class Investment < ApplicationRecord
     validates_presence_of :st_capital
     validates_presence_of :mt_capital
     validates_presence_of :lt_capital
-    has_one_attached :file
+    
     
 
     
