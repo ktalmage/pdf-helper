@@ -15,7 +15,7 @@ class Investment < ApplicationRecord
     has_one_attached :file
     
 
-    scope :ein_count, -> {where ("COUNT(EIN) == 9")}
+    
     
 
     include Rails.application.routes.url_helpers
