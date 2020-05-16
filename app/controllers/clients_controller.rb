@@ -16,7 +16,6 @@ class ClientsController < ApplicationController
     if params[:user_id]
       @clients = @client.investments
       
-      
     end
   end
 

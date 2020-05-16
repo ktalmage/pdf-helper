@@ -1,7 +1,7 @@
 Rails.application.routes.draw do
   
   resources :clients do
-    resources :investments, only: [:show, :new, :create, :index]
+    resources :investments
   end
  
   resources :users, only: [:show,:new, :create ]
