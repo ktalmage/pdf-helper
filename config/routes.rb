@@ -1,10 +1,16 @@
 Rails.application.routes.draw do
   
-  resources :clients do
-    resources :investments
-  end
+  # resources :clients do
+    
+  # end
  
-  resources :users, only: [:show,:new, :create ]
+  resources :users, only: [:show,:new, :create ] 
+  
+  resources :clients do
+      resources :investments, only: [:index, :show]
+    end
+  
+
   
   get 'login', to: 'sessions#new'
 
@@ -19,7 +25,7 @@ Rails.application.routes.draw do
   get 'authorized', to: 'sessions#page_requires_login'
 
   resources :investments
-
+ 
   root to: 'main#home'
  
   

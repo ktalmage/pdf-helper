@@ -1,8 +1,8 @@
 <% if @investment.errors.any? %>
   <div id="error_explanation">
-    <h2 style="color: red;"><%= pluralize(@user.errors.count, "error") %> prohibited this investment from being updated:</h2>
+    <h2 style="color: red;"><%= pluralize(@investment.errors.count, "error") %> prohibited this investment from being updated:</h2>
     <ul>
-    <% @user.errors.full_messages.each do |msg| %>
+    <% @investment.errors.full_messages.each do |msg| %>
      <h3 style="color: red;"><li><%= msg %></li></h3>
     <% end %>
     </ul>

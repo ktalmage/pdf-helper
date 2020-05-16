@@ -8,9 +8,9 @@ Bundler.require(*Rails.groups)
 
 module PdfHelper
   class Application < Rails::Application
-    # config.load_defaults 6.0
-    initializer(:remove_activestorage_routes, after: :add_routing_paths) {|app|
-      app.routes_reloader.paths.delete_if {|path| path =~ /activestorage/}}
+    config.load_defaults 6.0
+    # initializer(:remove_activestorage_routes, after: :add_routing_paths) {|app|
+    #   app.routes_reloader.paths.delete_if {|path| path =~ /activestorage/}}
  
     
 
