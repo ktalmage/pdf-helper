@@ -8,8 +8,8 @@ class CreateInvestments < ActiveRecord::Migration[6.0]
       t.decimal :st_capital
       t.decimal :mt_capital
       t.decimal :lt_capital
-      t.integer :user_id
-      t.integer :client_id
+      t.belongs_to :user, foreign_key: true
+      t.belongs_to :client, foreign_key: true
     end
   end
 end

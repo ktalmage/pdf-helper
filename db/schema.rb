@@ -29,8 +29,10 @@ ActiveRecord::Schema.define(version: 2020_05_16_161509) do
     t.decimal "st_capital"
     t.decimal "mt_capital"
     t.decimal "lt_capital"
-    t.integer "user_id"
-    t.integer "client_id"
+    t.bigint "user_id"
+    t.bigint "client_id"
+    t.index ["client_id"], name: "index_investments_on_client_id"
+    t.index ["user_id"], name: "index_investments_on_user_id"
   end
 
   create_table "users", force: :cascade do |t|
@@ -41,4 +43,6 @@ ActiveRecord::Schema.define(version: 2020_05_16_161509) do
     t.datetime "updated_at", precision: 6, null: false
   end
 
+  add_foreign_key "investments", "clients"
+  add_foreign_key "investments", "users"
 end
