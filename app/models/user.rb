@@ -6,5 +6,5 @@ class User < ApplicationRecord
     validates :password_confirmation, presence: true
     has_many :investments
     has_many :clients, through: :investments
-    accepts_nested_attributes_for :clients
+    
 end

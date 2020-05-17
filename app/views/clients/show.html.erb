@@ -7,8 +7,8 @@
 
 <h2>Client's Investments</h2>
 
- <%= link_to "Add an Investment", client_investment_path %>
- <%# <table>
+ 
+ <table>
   <tr>
     <th>Investment</th>
     <th>EIN</th>
@@ -21,21 +21,19 @@
     <th>Edit</th>
     <th>Delete</th>
   </tr>
-  <tr> %>
+  <tr>
     <% @client.investments.each  do |inv|%>
-    <%= inv.name %>
-
+    <td><%= inv.name %></td>
+    <td><%= inv.ein %></td>
+    <td><%= inv.ordinary_income%></td>
+    <td><%= inv.interest_income%></td>
+    <td><%= inv.st_capital %></td>
+    <td><%= inv.mt_capital %></td>
+    <td><%= inv.lt_capital %></td>
+    <td><%= inv.total %></td>
     <% end %>
-<%# </tr> %>
+    </tr>
     
-     <%# <td><%=@client.investments.ein</td>  %>
-     <%# <td><%=number_to_currency(@client.investments.ordinary_income, :unit => "$")%>%></td>
-     <%# <td><%=number_to_currency(@client.investments.interest_income, :unit=> "$")%></td>
-    <%# <td><%=number_to_currency(@client.investments.st_capital,:unit => "$") %></td> 
-    <%# <td><%=number_to_currency(@client.investments.mt_capital, :unit => "$")%></td> %>
-     <%# <td><%=number_to_currency(@client.investment.lt_capital, :unit=> "$")%></td> %> %>
-    <%# <td><%=number_to_currency(@investment.total, :unit => "$")%></td> %> %>
-     <%# <td><p><%= link_to("Edit", edit_investment_path(@investment)) %></p></td>
-   <%# <td><p><%= link_to("Delete", @investment, method: :delete, data:{confirm: "Are you Sure?"}) %></p></td> %>
-   </tr> %>
-   <br>
+    
+   </tr> 
+   <br> 

@@ -1,7 +1,8 @@
 class Client < ApplicationRecord
-    validates :name, uniqueness: true, presence: true
-    validates :ein, uniqueness: true, presence: true
+    validates :name, uniqueness: true
+    validates :ein, uniqueness: true
     has_many :investments
-    has_many :users, through: :investments
+    has_and_belongs_to_many :users, through: :investments
     accepts_nested_attributes_for :investments
+
 end

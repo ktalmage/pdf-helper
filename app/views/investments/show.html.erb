@@ -37,8 +37,8 @@ tr:nth-child(even) {
     <th>Delete</th>
   </tr>
   <tr>
-    <td><%=@investment.name%></td>
-    <td><%=@investment.ein%></td>
+    <td><%=@client.investments.name%></td>
+    <td><%=@client.investments.ein%></td>
     <td><%=number_to_currency(@investment.ordinary_income, :unit => "$")%></td>
     <td><%=number_to_currency(@investment.interest_income, :unit=> "$")%></td>
     <td><%=number_to_currency(@investment.st_capital,:unit => "$") %></td>
