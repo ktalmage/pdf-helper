@@ -63,6 +63,6 @@ class ClientsController < ApplicationController
   end
 
   def client_params
-    params.require(:client).permit(:name,:ein)
+    params.require(:client).permit(:name,:ein,investment_attributes: [:name,:ein,:ordinary_income,:interest_income,:st_capital,:mt_capital,:lt_capital])
   end
 end
