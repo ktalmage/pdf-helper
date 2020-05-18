@@ -1,13 +1,9 @@
 Rails.application.routes.draw do
   
-  # resources :clients do
-    
-  # end
- 
-  resources :users, only: [:show,:new, :create ] 
+ resources :users, only: [:show,:new, :create ] 
   
   resources :clients do
-      resources :investments, only: [:index, :show]
+      resources :investments, only: [:index, :new, :create,:show]
     end
   
 

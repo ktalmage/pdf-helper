@@ -21,10 +21,11 @@ class ClientsController < ApplicationController
 
   def new
     @client = Client.new
+    @client.investments.build
   end
 
   def create
-    @client = Client.new(client_params)
+    @client = current_user.clients.new(client_params)
     if @client.valid? && current_user
       @client.save
     redirect_to @client

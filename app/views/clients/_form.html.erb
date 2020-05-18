@@ -16,21 +16,5 @@
 <%= f.text_field :name %><br>
 <%= f.label :ein %>
 <%= f.text_field :ein %>
-
-<h3>Add their Investments</h3>
-<%= fields_for @investment do |form| %>
-<%= form.label :name %>
-<%= form.text_field :name %><br>
-<%= form.label :ein %>
-<%= form.text_field :ein %>
-<%= form.label :ordinary_income%>
-<%= form.number_field :ordinary_income%>
-<%= form.label :st_capital%>
-<%= form.number_field :st_capital %>
-<%= form.label :mt_capital%>
-<%= form.number_field :mt_capital %>     
-<%= form.label :lt_capital%>
-<%= form.number_field :lt_capital %>  
-<%= form.submit%>
-<% end %>
+<%= f.submit%>
 <%end %>
