@@ -76,8 +76,7 @@ class InvestmentsController < ApplicationController
     end
 
     def investment_params
-        params.require(:investment).permit(:name,:ein,:ordinary_income,:interest_income,:st_capital,:mt_capital,:lt_capital, client_ids: []).tap do |p|
-            p[:client_ids] << current_user.id
-        end
+        params.require(:investment).permit(:name,:ein,:ordinary_income,:interest_income,:st_capital,:mt_capital,:lt_capital, client_ids: [])
+        
     end
 end

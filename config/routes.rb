@@ -20,7 +20,7 @@ Rails.application.routes.draw do
 
   get 'authorized', to: 'sessions#page_requires_login'
 
-  resources :investments
+  resources :investments, only: [:index,:show]
  
   root to: 'main#home'
  
