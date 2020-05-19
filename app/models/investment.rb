@@ -14,10 +14,6 @@ class Investment < ApplicationRecord
     validates_presence_of :lt_capital
     
     
-
-    
-    
-
     include Rails.application.routes.url_helpers
 
     def total

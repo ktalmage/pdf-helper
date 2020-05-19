@@ -37,7 +37,7 @@ tr:nth-child(even) {
     <th>Delete</th>
   </tr>
   <tr>
-    <td><%=@client.investments.each do |inv|%></td>
+    <td><% @client.investments.each do |inv|%></td>
     <td><%=inv.name%></td>
     <td><%=inv.ein%></td>
     <td><%=number_to_currency(inv.ordinary_income, :unit => "$")%></td>
@@ -53,5 +53,3 @@ tr:nth-child(even) {
   <br>
 
 
-<%# <iframe src=<%= url_for(@investment.my_file.file) %>
- <%# width="700" height="780" style="border: none;"></iframe> %> 

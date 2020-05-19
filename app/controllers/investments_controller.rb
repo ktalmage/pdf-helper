@@ -1,13 +1,13 @@
 class InvestmentsController < ApplicationController
     before_action :authorized
-    before_action :set_investment, only: [:show, :edit, :update, :destroy]
+    # before_action :set_investment, only: [:show, :edit, :update, :destroy]
     
 
     def index
-        if current_user
+        if params[:client_id]
             @client = Client.find_by_id(params[:client_id])
             @investments = @client.investments
-        else
+            else
             @investments = Investment.all
         end
     end
@@ -15,35 +15,34 @@ class InvestmentsController < ApplicationController
     def show
         set_investment
         if params[:client_id]
-           
-            @client = Client.find_by_id(params[:client_id])
+           @client = Client.find_by_id(params[:client_id])
+
         end
     end
 
     def new
-        set_client_inv
+        if params[:client_id]
         @investment = Investment.new
+        end
     end
 
     def create
         if params[:client_id]
-            set_client_inv
-        @investment = @client.investments.build(investment_params)
-        else
-            @investment = Investment.new(investment_params)
-        end
-        if @investment.save
-            redirect_to client_investments_path
-        else
-            render :new, alert: "Error creating investment"
+            @investment = Investment.create(investment_params.merge(user_id: current_user.id))
+            if @investment.save
+                redirect_to client_investment_path(@client)
+            else
+                render :new
+            end
         end
     end
+    
 
     def edit
     end
 
     def update
-        @investment.update(investment_params)
+        @investment.update(investment_params.merge(user_id: current_user.id))
         if @investment.errors.any?
             render :edit
         else
@@ -73,10 +72,12 @@ class InvestmentsController < ApplicationController
     end
 
     def set_client_inv
-       @client = Client.find_by_id(params[:id])
+       @client = Client.find_by_id(params[:client_id])
     end
 
     def investment_params
-        params.require(:investment).permit(:name,:ein,:ordinary_income,:interest_income,:st_capital,:mt_capital,:lt_capital)
+        params.require(:investment).permit(:name,:ein,:ordinary_income,:interest_income,:st_capital,:mt_capital,:lt_capital, client_ids: []).tap do |p|
+            p[:client_ids] << current_user.id
+        end
     end
 end

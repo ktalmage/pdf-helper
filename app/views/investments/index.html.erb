@@ -1,8 +1,14 @@
 <h1>Investments </h1>
+<% if @client %>
+<h2><%=@client.name%>'s Investments</h2>
+
 <% @investments.each do |investment| %>
-  <div><%= link_to "#{investment.name}", investment_path(investment) %></div>
+  <div><%= link_to "#{investment.name}", investment_path(@client, investment) %></div>
 <% end %>
+<%end %>
+
 <br>
 <% if logged_in? %>
 <%= link_to "Add an Investment", new_client_investment_path %>
 <% end %>
+

@@ -4,7 +4,7 @@ class User < ApplicationRecord
     validates :email, uniqueness: true
     validates :password, presence: true
     validates :password_confirmation, presence: true
-    has_many :investments
+    has_many :investments, inverse_of: :client
     has_many :clients, through: :investments
     
     def self.find_or_create_by_omniauth(auth_hash)

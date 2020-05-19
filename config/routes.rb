@@ -3,7 +3,7 @@ Rails.application.routes.draw do
  resources :users, only: [:show,:new, :create ] 
   
   resources :clients do
-      resources :investments, only: [:index, :new, :create,:show]
+      resources :investments, only: [:index,:new,:create,:show, :edit]
     end
   
 
