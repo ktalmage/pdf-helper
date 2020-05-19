@@ -7,4 +7,10 @@ class User < ApplicationRecord
     has_many :investments
     has_many :clients, through: :investments
     
+    def self.find_or_create_by_omniauth(auth_hash)
+        self.where(:email => auth_hash["info"]["email"]).first_or_create do |user|
+            user.password = SecureRandom.hex
+            user.password_confirmation == user.password
+        end
+    end
 end

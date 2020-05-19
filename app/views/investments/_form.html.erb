@@ -9,20 +9,24 @@
   </div>
 <% end %>
 
-<%= form_for @investment do |f|%>
-<%= f.label :name %>
-<%= f.text_field :name %>
-<%= f.label :ein %>
-<%= f.number_field :ein %><br>
-<%= f.label :ordinary_income %>
-<%= f.number_field :ordinary_income %>
-<%= f.label :interest_income %>
-<%= f.number_field :interest_income %><br>
-<%= f.label :st_capital %>
-<%= f.number_field :st_capital %>
-<%= f.label :mt_capital %>
-<%= f.number_field :mt_capital %>
-<%= f.label :lt_capital %>
-<%= f.number_field :lt_capital %>
-<%= f.submit %>
+
+
+<%= form_with(model: @investment, local:true) do |f|%>
+
+ <h3>Input investment:</h3>
+  <%= f.label :name %>
+  <%= f.text_field :name %>
+  <%= f.label :ein %>
+  <%= f.number_field :ein %><br>
+  <%= f.label :ordinary_income %>
+  <%= f.number_field :ordinary_income %>
+  <%= f.label :interest_income %>
+  <%= f.number_field :interest_income %><br>
+  <%= f.label :st_capital %>
+  <%= f.number_field :st_capital %>
+  <%= f.label :mt_capital %>
+  <%= f.number_field :mt_capital %>
+  <%= f.label :lt_capital %>
+  <%= f.number_field :lt_capital %>
+  <%= f.submit %>
 <% end %>

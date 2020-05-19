@@ -5,35 +5,9 @@
 <p> <%= link_to("Edit", edit_client_path(@client)) %></p>
 <p> <%= link_to("Delete", @client, method: :delete, data:{confirm: "Are you Sure?"}) %></p>
 
-<h2>Client's Investments</h2>
+<%= link_to "See Investments", client_investment_path(@client) %>
 
- 
- <table>
-  <tr>
-    <th>Investment</th>
-    <th>EIN</th>
-    <th>Ordinary Income</th>
-    <th>Interest Income</th>
-    <th>Short-Term Capital Gains/(Losses)</th>
-    <th>Mid-Term Capital Gains/(Losses)</th>
-    <th>Long-Term Capital Gains/(Losses)</th>
-    <th>Total Income</th>
-    <th>Edit</th>
-    <th>Delete</th>
-  </tr>
-  <tr>
-    <% @client.investments.each  do |inv|%>
-    <td><%= inv.name %></td>
-    <td><%= inv.ein %></td>
-    <td><%= inv.ordinary_income%></td>
-    <td><%= inv.interest_income%></td>
-    <td><%= inv.st_capital %></td>
-    <td><%= inv.mt_capital %></td>
-    <td><%= inv.lt_capital %></td>
-    <td><%= inv.total %></td>
-    <% end %>
-    </tr>
-    
-    
-   </tr> 
-   <br> 
+<%= link_to "Add an Investment", new_client_investment_path(@client) %>
+
+
+

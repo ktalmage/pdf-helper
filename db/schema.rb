@@ -18,7 +18,6 @@ ActiveRecord::Schema.define(version: 2020_05_16_161509) do
   create_table "clients", force: :cascade do |t|
     t.string "name"
     t.string "ein"
-    t.integer "user_id"
   end
 
   create_table "investments", force: :cascade do |t|

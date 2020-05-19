@@ -7,25 +7,12 @@ skip_before_action :authorized, only: [:new, :create, :welcome]
 
   def create
     if auth_hash = request.env["omniauth.auth"]
-      oauth_email = request.env["omniauth.auth"]["info"]["email"]
-      oauth_name = request.env["omniauth.auth"]["info"]["name"]
-      
-      if @user = User.find_by(:email => oauth_email)
-        session[:user_id] = @user.id
-        redirect_to '/welcome'
-      else
-        @user = User.new(:email => oauth_email, :password => SecureRandom.hex, :name => oauth_name)
-        if @user.save
-        session[:user_id] = @user.id
-        redirect_to '/welcome'
-        else
-          redirect_to  'welcome'
-        
-          end
-          end
-      else
-        @user = User.find_by(email: params[:email])
-      if @user && @user.authenticate(params[:password])
+      @user = User.find_or_create_by_omniauth(auth_hash)
+      session[:user_id] = @user.id
+      redirect_to '/welcome'
+    else
+    @user = User.find_by(:email => params[:email])
+    if @user && @user.authenticate(params[:password])
         session[:user_id] = @user.id
         redirect_to '/welcome'
       else
@@ -33,6 +20,8 @@ skip_before_action :authorized, only: [:new, :create, :welcome]
       end
     end
   end
+
+  
     
   def login
   
