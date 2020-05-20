@@ -1,4 +1,5 @@
 <h1>Client Info: </h1>
+<% if logged_in? %>
 <p><%= @client.name %></p>
 <p><%= @client.ein %></p>
 
@@ -8,6 +9,6 @@
 <%= link_to "See Investments", client_investment_path(@client) %>
 
 <%= link_to "Add an Investment", new_client_investment_path(@client) %>
-
+<% end %>
 
 

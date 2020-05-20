@@ -2,6 +2,7 @@ class Investment < ApplicationRecord
     belongs_to :user
     belongs_to :client
     validates :name, uniqueness: true
+    validates :ein, uniqueness: true, length: {is: 9}
     validates :ordinary_income, numericality: true
     validates :interest_income, numericality: true
     validates :st_capital, numericality: true
@@ -14,7 +15,7 @@ class Investment < ApplicationRecord
     validates_presence_of :lt_capital
     
     
-    include Rails.application.routes.url_helpers
+    
 
     def total
     Investment.all.where(:id => self.id).pluck(:ordinary_income, :interest_income,:st_capital, :mt_capital, :lt_capital).map(&:sum).sum

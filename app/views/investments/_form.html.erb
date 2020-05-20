@@ -10,7 +10,7 @@
 <% end %>
 
 
-<%= form_with(model: @investment, local:true) do |f|%>
+<%= form_with(model: [@create, Investment.new]) do |f|%>
 
  <h3>Input investment:</h3>
   <%= f.label :name %>
@@ -27,6 +27,6 @@
   <%= f.number_field :mt_capital %>
   <%= f.label :lt_capital %>
   <%= f.number_field :lt_capital %>
-  <%= f.submit %>
+  <%= f.submit  %>
 <% end %>
 

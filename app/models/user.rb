@@ -13,4 +13,7 @@ class User < ApplicationRecord
             user.password_confirmation == user.password
         end
     end
+
+    
+        
 end

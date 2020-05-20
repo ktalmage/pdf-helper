@@ -3,9 +3,9 @@ Rails.application.routes.draw do
  resources :users, only: [:show,:new, :create ] 
   
   resources :clients do
-      resources :investments, only: [:index,:new,:create,:show, :edit]
+      resources :investments 
     end
-  
+  resources :investments
 
   
   get 'login', to: 'sessions#new'
@@ -20,7 +20,7 @@ Rails.application.routes.draw do
 
   get 'authorized', to: 'sessions#page_requires_login'
 
-  resources :investments, only: [:index,:show]
+  
  
   root to: 'main#home'
  
