@@ -1,8 +1,6 @@
 class InvestmentsController < ApplicationController
     before_action :authorized
     
-    
-
     def index
         if params[:client_id]
             set_client_inv

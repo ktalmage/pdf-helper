@@ -6,7 +6,7 @@
 <p> <%= link_to("Edit", edit_client_path(@client)) %></p>
 <p> <%= link_to("Delete", @client, method: :delete, data:{confirm: "Are you Sure?"}) %></p>
 
-<%= link_to "See Investments", client_investment_path(@client) %>
+<%= link_to "See Investments", client_investments_path(@client) %>
 
 <%= link_to "Add an Investment", new_client_investment_path(@client) %>
 <% end %>

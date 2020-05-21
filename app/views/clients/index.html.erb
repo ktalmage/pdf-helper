@@ -22,14 +22,14 @@ tr:nth-child(even) {
     <th>Client Name</th>
     <th>EIN</th>
   </tr>
-  
+  <% if @client %>
 <% @clients.each do |client| %>
   <tr>
   <td><%= link_to "#{client.name}", client_path(client) %></td>
   <td><%= client.ein %></td>
   </tr>
   <% end %>
-  
+  <% end %>
 </table><br>
 <% if logged_in? %>
 <%= link_to "Add a client", new_client_path %><br>
