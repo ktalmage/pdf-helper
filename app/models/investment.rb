@@ -1,6 +1,6 @@
 class Investment < ApplicationRecord
-    belongs_to :user
-    belongs_to :client
+    belongs_to :user, dependent: :destroy
+    belongs_to :client, dependent: :destroy
     validates :name, uniqueness: true
     validates :ein, uniqueness: true, length: {is: 9}
     validates :ordinary_income, numericality: true

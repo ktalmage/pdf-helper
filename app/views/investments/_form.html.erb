@@ -11,7 +11,8 @@
 
 
 <%= form_with(model: [@client, @investment], local: :true) do |f|%>
-
+ <h3>Select a Client:</h3>
+  <%= f.collection_select :client_name, Client.all, :name,:name %>
  <h3>Input investment:</h3>
   <%= f.label :name %>
   <%= f.text_field :name %>
