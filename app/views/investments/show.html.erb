@@ -37,20 +37,17 @@ tr:nth-child(even) {
     <th>Delete</th>
   </tr>
   <tr>
-    <% @client.investments.each do |inv|%>
-    <td><%=inv.name%></td>
-    <td><%=inv.ein%></td>
-    <td><%=number_to_currency(inv.ordinary_income, :unit => "$")%></td>
-    <td><%=number_to_currency(inv.interest_income, :unit=> "$")%></td>
-    <td><%=number_to_currency(inv.st_capital,:unit => "$") %></td>
-    <td><%=number_to_currency(inv.mt_capital, :unit => "$")%></td>
-    <td><%=number_to_currency(inv.lt_capital, :unit=> "$")%></td>
-    <td><%=number_to_currency(inv.total, :unit => "$")%></td>
-    <td><p><%= link_to("Edit", edit_client_investment_path(@client,inv)) %></p></td>
-    <td><p><%= link_to("Delete", client_investment_path(@client,inv), method: :delete, data:{confirm: "Are you Sure?"}) %></p></td>
-    
-    <%end%>
-  </tr>
+    <td><%=@investment.name%></td>
+    <td><%=@investment.ein%></td>
+    <td><%=number_to_currency(@investment.ordinary_income, :unit => "$")%></td>
+    <td><%=number_to_currency(@investment.interest_income, :unit=> "$")%></td>
+    <td><%=number_to_currency(@investment.st_capital,:unit => "$") %></td>
+    <td><%=number_to_currency(@investment.mt_capital, :unit => "$")%></td>
+    <td><%=number_to_currency(@investment.lt_capital, :unit=> "$")%></td>
+    <td><%=number_to_currency(@investment.total, :unit => "$")%></td>
+    <td><p><%= link_to("Edit", edit_client_investment_path(@client,@investment)) %></p></td>
+    <td><p><%= link_to("Delete", client_investment_path(@client,@investment), method: :delete, data:{confirm: "Are you Sure?"}) %></p></td>
+    </tr>
   <br>
 
 

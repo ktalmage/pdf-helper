@@ -10,7 +10,7 @@
 <% end %>
 
 
-<%= form_with(model: [@create, Investment.new]) do |f|%>
+<%= form_with(model: [@client, @investment], local: :true) do |f|%>
 
  <h3>Input investment:</h3>
   <%= f.label :name %>

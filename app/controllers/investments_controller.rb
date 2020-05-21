@@ -22,16 +22,30 @@ class InvestmentsController < ApplicationController
 
     def new
         if params[:client_id]
-        @investment = Investment.new
+        set_client_inv  
+        @investment = @client.investments.build
+        else
+            @investment = Investment.new
         end
     end
 
     def create
         if params[:client_id]
-            @investment = Investment.create(investment_params.merge(user_id: current_user.id))
+            @investment = Investment.new(investment_params)
+            @investment.user = current_user
+            @investment.client_id = params[:client_id]
             if @investment.save
-                redirect_to client_investment_path(@client)
+             redirect_to client_investment_path(params[:client_id],@investment)
             else
+            
+                render :new
+            end
+        else
+            @investment = Investment.new
+            if @investment.save
+                redirect_to @investment
+            else
+        
                 render :new
             end
         end
@@ -42,7 +56,7 @@ class InvestmentsController < ApplicationController
     end
 
     def update
-        @investment.update(investment_params.merge(user_id: current_user.id))
+        @investment.update(investment_params)
         if @investment.errors.any?
             render :edit
         else
@@ -65,7 +79,9 @@ class InvestmentsController < ApplicationController
 
     private
 
-    
+    def set_user
+        @user = User.find_by_id(params[:user_id])
+    end
 
     def set_investment
         @investment = Investment.find_by_id(params[:id])
@@ -76,7 +92,7 @@ class InvestmentsController < ApplicationController
     end
 
     def investment_params
-        params.require(:investment).permit(:name,:ein,:ordinary_income,:interest_income,:st_capital,:mt_capital,:lt_capital, client_ids: [])
+        params.require(:investment).permit(:name,:ein,:ordinary_income,:interest_income,:st_capital,:mt_capital,:lt_capital)
         
     end
 end
