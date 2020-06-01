@@ -66,6 +66,10 @@ gem 'mini_magick'
 # authentication
 gem "omniauth-github", '1.1.1'
 
+#updated activesupport for vulnerabilities
+
+gem "activesupport", ">= 6.0.3.1"
+
 
 
 
