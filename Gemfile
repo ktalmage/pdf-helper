@@ -70,6 +70,8 @@ gem "omniauth-github", '1.1.1'
 
 gem "activesupport", ">= 6.0.3.1"
 
+gem 'cancancan'
+
 
 
 
