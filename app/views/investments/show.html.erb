@@ -21,8 +21,9 @@ tr:nth-child(even) {
 </head>
 <body>
 
-<h2>Client Investments:</h2>
+<h2>Investment Details:</h2>
 <p><%= link_to 'Welcome Page', welcome_path %></p>
+<p><%= link_to 'All Client Investments',client_investments_path(@client,@investments) %>
 <table>
   <tr>
     <th>Investment</th>
