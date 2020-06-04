@@ -1,9 +1,59 @@
-<h1>All <%=current_user.name %>'s Investments </h1>
-<% @client.investments.each do |investment| %>
-  <li><%= link_to "#{investment.name}", client_investment_path(@client, investment) %></li>
-  
-<% end %>
+<h2>All <%=current_user.name %>'s Investments </h2>
+<!DOCTYPE html>
+<html>
+<head>
+<style>
+.content-loader table {
+  font-family: arial, sans-serif;
+  border-collapse: collapse;
+  white-space: nowrap;
+}
 
+td, th {
+  border: 1px solid #dddddd;
+  text-align: center;
+  padding: 8px;
+}
+
+tr:nth-child(even) {
+  background-color: #dddddd;
+}
+</style>
+</head>
+<body>
+
+<h2>Investment Details:</h2>
+<p><%= link_to 'Welcome Page', welcome_path %></p>
+<p><%= link_to 'All Client Investments',client_investments_path(@client,@investments) %>
+<% @client.investments.each do |inv|%>
+<table>
+  <tr>
+    <th>Investment</th>
+    <th>EIN</th>
+    <th>Ordinary Income</th>
+    <th>Interest Income</th>
+    <th>Short-Term Capital Gains/(Losses)</th>
+    <th>Mid-Term Capital Gains/(Losses)</th>
+    <th>Long-Term Capital Gains/(Losses)</th>
+    <th>Total Income</th>
+    <th>Edit</th>
+    <th>Delete</th>
+  </tr>
+  <tr>
+    <td><%=inv.name%></td>
+    <td><%=inv.ein%></td>
+    <td><%=number_to_currency(inv.ordinary_income, :unit => "$")%></td>
+    <td><%=number_to_currency(inv.interest_income, :unit=> "$")%></td>
+    <td><%=number_to_currency(inv.st_capital,:unit => "$") %></td>
+    <td><%=number_to_currency(inv.mt_capital, :unit => "$")%></td>
+    <td><%=number_to_currency(inv.lt_capital, :unit=> "$")%></td>
+    <td><%=number_to_currency(inv.total, :unit => "$")%></td>
+    <td><p><%= link_to("Edit", edit_client_investment_path(@client,inv)) %></p></td>
+    <td><p><%= link_to("Delete", client_investment_path(@client,inv), method: :delete, data:{confirm: "Are you Sure?"}) %></p></td>
+    <% end %>
+    </tr>
+  </table>
+  <br>
 
 
 

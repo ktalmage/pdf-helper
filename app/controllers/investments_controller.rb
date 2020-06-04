@@ -2,13 +2,19 @@ class InvestmentsController < ApplicationController
     before_action :authorized
     
     def index
-        if params[:client_id]
-            set_client_inv
-            @investments = @client.investments
+        set_client_inv
+        if current_user.clients.include?(@client)
+        
+            if params[:client_id]
             
-            else
-            @investments = Investment.all
+                @investments = @client.investments
             
+                else
+                @investments = Investment.all
+            
+            end
+        else
+            redirect_to '/welcome'
         end
     end
 
@@ -37,8 +43,7 @@ class InvestmentsController < ApplicationController
             if @investment.save
              redirect_to client_investment_path(params[:client_id],@investment)
             else
-            
-                render :new
+            render :new
             end
         else
             @investment = Investment.new
@@ -63,7 +68,7 @@ class InvestmentsController < ApplicationController
 
     def update
       if params[:client_id]
-        set_investment
+        set_client_inv
         @investment.update(investment_params)
         if @investment.errors.any?
             render :edit
@@ -80,12 +85,8 @@ class InvestmentsController < ApplicationController
         end
     end
         
-
-
-    
-    
     def destroy
-        set_investment
+        set_client_investment
         @investment.destroy
         flash[:notice] = "Investment deleted."
         redirect_to client_investment_path(@client, @investment)
@@ -107,6 +108,5 @@ class InvestmentsController < ApplicationController
 
     def investment_params
         params.require(:investment).permit(:name,:ein,:ordinary_income,:interest_income,:st_capital,:mt_capital,:lt_capital)
-        
     end
 end

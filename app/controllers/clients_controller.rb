@@ -3,12 +3,9 @@ class ClientsController < ApplicationController
   before_action :authorized
   
   def index
-  if params[:user_id]
-    set_user
-    @clients = @user.clients
-   else
-    @clients = Client.all
-   end 
+  
+    @clients = current_user.clients
+   
   end
   
   def show
