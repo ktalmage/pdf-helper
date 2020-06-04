@@ -8,8 +8,7 @@ class InvestmentsController < ApplicationController
             if params[:client_id]
             
                 @investments = @client.investments
-            
-                else
+            else
                 @investments = Investment.all
             
             end
@@ -58,18 +57,20 @@ class InvestmentsController < ApplicationController
     
 
     def edit
-        set_investment
+        if params[:client_id]
+            set_investment
         if @investment
             render "edit"
         else
             redirect_to @investment
         end
     end
+    end
 
     def update
-      if params[:client_id]
-        set_client_inv
-        @investment.update(investment_params)
+        if params[:client_id]
+            set_client_inv
+            @investment.update(investment_params)
         if @investment.errors.any?
             render :edit
         else
