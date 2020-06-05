@@ -39,6 +39,7 @@ tr:nth-child(even) {
     <th>Show</th>
   </tr>
   <% @client.investments.each do |inv|%>
+  <tbody>
   <tr>
     <td><%=inv.name%></td>
     <td><%=inv.ein%></td>
@@ -53,8 +54,22 @@ tr:nth-child(even) {
     <td><p><%= link_to("Show", client_investment_path(@client,inv)) %></p></td>
     <% end %>
     </tr>
+    </tbody>
+    <tfoot>
+    <tr>
+    <td colspan="2"><strong>Totals</strong></td>
+    <td><strong><%=number_to_currency(@investments.sum(:ordinary_income), :unit => "$")%></strong></td>
+    <td><strong><%=number_to_currency(@investments.sum(:interest_income), :unit => "$")%></strong></td>
+    <td><strong><%=number_to_currency(@investments.sum(:st_capital), :unit => "$")%></strong></td>
+    <td><strong><%=number_to_currency(@investments.sum(:mt_capital), :unit => "$")%></strong></td>
+    <td><strong><%=number_to_currency(@investments.sum(:lt_capital), :unit => "$")%></strong></td>
+    </tr>
+    </tfoot>
   </table>
-  <br>
+  
+
+  
+  
 
 
 

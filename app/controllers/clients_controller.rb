@@ -10,7 +10,6 @@ class ClientsController < ApplicationController
   
   def show
     @client = Client.find(params[:id])
-    params.inspect
     if params[:client_id]
       @clients = @client.investments
     end
@@ -60,6 +59,6 @@ class ClientsController < ApplicationController
   end
 
   def client_params
-    params.require(:client).permit(:name,:ein)
+    params.require(:client).permit(:name,:ein, :investment_attributes => [])
   end
 end
