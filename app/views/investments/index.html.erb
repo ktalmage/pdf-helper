@@ -63,6 +63,7 @@ tr:nth-child(even) {
     <td><strong><%=number_to_currency(@investments.sum(:st_capital), :unit => "$")%></strong></td>
     <td><strong><%=number_to_currency(@investments.sum(:mt_capital), :unit => "$")%></strong></td>
     <td><strong><%=number_to_currency(@investments.sum(:lt_capital), :unit => "$")%></strong></td>
+    <td><strong><%=number_to_currency(@investments.footed, :unit => "$")%></strong></td>
     </tr>
     </tfoot>
   </table>
