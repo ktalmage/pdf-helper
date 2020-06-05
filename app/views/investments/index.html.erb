@@ -1,4 +1,5 @@
-<h2>All <%=current_user.name %>'s Investments </h2>
+<h2>Investments for:</h2>
+<h2><strong><%= @client.name %></strong></h2>
 <!DOCTYPE html>
 <html>
 <head>
@@ -21,9 +22,8 @@ tr:nth-child(even) {
 </style>
 </head>
 <body>
-
-<h2>Investment Details:</h2>
 <p><%= link_to 'Welcome Page', welcome_path %></p>
+
 <table>
   <tr>
     <th>Investment</th>

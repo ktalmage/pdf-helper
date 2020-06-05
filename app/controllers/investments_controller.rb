@@ -4,8 +4,7 @@ class InvestmentsController < ApplicationController
     def index
         set_client_inv
         if current_user.clients.include?(@client)
-        
-            if params[:client_id]
+           if params[:client_id]
             
                 @investments = @client.investments
             else
@@ -60,6 +59,7 @@ class InvestmentsController < ApplicationController
         if params[:client_id]
             set_investment
         if @investment
+            
             render "edit"
         else
             redirect_to @investment
