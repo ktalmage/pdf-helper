@@ -36,6 +36,7 @@ tr:nth-child(even) {
     <th>Total Income</th>
     <th>Edit</th>
     <th>Delete</th>
+    <th>Reportable</th>
   </tr>
   <tr>
     <td><%=@investment.name%></td>
@@ -48,6 +49,7 @@ tr:nth-child(even) {
     <td><%=number_to_currency(@investment.total, :unit => "$")%></td>
     <td><p><%= link_to("Edit", edit_client_investment_path(@client,@investment)) %></p></td>
     <td><p><%= link_to("Delete", client_investment_path(@client,@investment), method: :delete, data:{confirm: "Are you Sure?"}) %></p></td>
+    <td><p><%= @investment.reportable_loss%></p></td>
     </tr>
   <br>
 
