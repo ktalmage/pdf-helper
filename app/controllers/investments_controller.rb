@@ -17,11 +17,8 @@ class InvestmentsController < ApplicationController
     end
 
     def show
-        set_investment
-        if params[:client_id]
-           @client = Client.find_by_id(params[:client_id])
-
-        end
+       set_client_inv
+       set_investment
     end
 
     def new
@@ -76,7 +73,7 @@ class InvestmentsController < ApplicationController
         else
             if @investment.valid?
             @investment.save
-            redirect_to client_investment_path(params[:client],@investment)
+            redirect_to client_investment_path(@client,@investment)
         else
             flash[:alert] =  "You do not have access to this. Please login"
             redirect_to :login
