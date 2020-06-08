@@ -1,4 +1,5 @@
 class InvestmentsController < ApplicationController
+    
     before_action :authorized
     
     def index
@@ -17,8 +18,15 @@ class InvestmentsController < ApplicationController
     end
 
     def show
-       set_client_inv
-       set_investment
+      set_client_inv
+      if params[:client_id] && current_user.clients.include?(@client)
+        
+            set_investment
+            
+        else
+            redirect_to '/welcome'
+        
+        end
     end
 
     def new
@@ -53,33 +61,21 @@ class InvestmentsController < ApplicationController
     
 
     def edit
-        if params[:client_id]
+        set_client_inv
+        if params[:client_id] && current_user.clients.include?(@client)
+            
             set_investment
-        if @investment
+            if @investment
             
             render "edit"
         else
             redirect_to @investment
+            end
         end
-    end
     end
 
     def update
-        if params[:client_id]
-            set_client_inv
-            @investment.update(investment_params)
-        if @investment.errors.any?
-            render :edit
-        else
-            if @investment.valid?
-            @investment.save
-            redirect_to client_investment_path(@client,@investment)
-        else
-            flash[:alert] =  "You do not have access to this. Please login"
-            redirect_to :login
-                end
-            end
-        end
+        
     end
         
     def destroy
