@@ -76,8 +76,7 @@ class InvestmentsController < ApplicationController
         else
             if @investment.valid?
             @investment.save
-            redirect_to client_investment_path(@client,@investment)
-            
+            redirect_to client_investment_path(params[:client],@investment)
         else
             flash[:alert] =  "You do not have access to this. Please login"
             redirect_to :login

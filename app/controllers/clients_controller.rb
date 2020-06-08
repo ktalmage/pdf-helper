@@ -30,6 +30,11 @@ class ClientsController < ApplicationController
   end
 
   def edit
+    @client = current_user.clients.find_by(id: params[:id])
+    if @client
+      else
+      redirect_to '/welcome'
+    end
   end
 
   def update
