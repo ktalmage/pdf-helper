@@ -3,16 +3,17 @@ class ClientsController < ApplicationController
   before_action :authorized
   
   def index
-  
     @clients = current_user.clients.uniq
-   
   end
   
   def show
-    @client = Client.find(params[:id])
-    if params[:client_id]
-      @clients = @client.investments
-    end
+    
+     @client = current_user.clients.find_by(id: params[:id])
+      if @client
+        else
+        redirect_to '/welcome'
+      end
+
   end
 
   def new
