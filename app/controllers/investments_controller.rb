@@ -79,10 +79,11 @@ class InvestmentsController < ApplicationController
     end
         
     def destroy
-        set_client_investment
+        set_client_inv
+        set_investment
         @investment.destroy
         flash[:notice] = "Investment deleted."
-        redirect_to client_investment_path(@client, @investment)
+        redirect_to client_investments_path(@client, @investments)
     end
 
     private
