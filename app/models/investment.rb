@@ -17,7 +17,8 @@ class Investment < ApplicationRecord
     scope :reportable_loss, -> { where("ordinary_income <-2000000") }
 
     def total
-    Investment.all.where(:id => self.id).pluck(:ordinary_income, :interest_income,:st_capital, :mt_capital, :lt_capital).map(&:sum).sum
+        Investment.all.where(:id => self.id).pluck(:ordinary_income, :interest_income,:st_capital, 
+        :mt_capital, :lt_capital).map(&:sum).sum
     end
 
     def self.footed

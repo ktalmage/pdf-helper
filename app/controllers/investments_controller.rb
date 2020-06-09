@@ -18,13 +18,10 @@ class InvestmentsController < ApplicationController
 
     def show
       set_client_inv
-      if params[:client_id] && current_user.clients.include?(@client)
-
+        if params[:client_id] && current_user.clients.include?(@client)
             set_investment
-            
         else
             redirect_to '/welcome'
-        
         end
     end
 
@@ -82,6 +79,8 @@ class InvestmentsController < ApplicationController
             else
                 render 'edit'
             end
+        else
+            redirect_to '/welcome'
         end
     end
         
@@ -95,10 +94,6 @@ class InvestmentsController < ApplicationController
 
     private
 
-    def set_user
-        @user = User.find_by_id(params[:user_id])
-    end
-
     def set_investment
         @investment = Investment.find_by_id(params[:id])
     end
@@ -108,6 +103,7 @@ class InvestmentsController < ApplicationController
     end
 
     def investment_params
-        params.require(:investment).permit(:name,:ein,:ordinary_income,:interest_income,:st_capital,:mt_capital,:lt_capital)
+        params.require(:investment).permit(:name,:ein,:ordinary_income,:interest_income,
+        :st_capital,:mt_capital,:lt_capital)
     end
 end
