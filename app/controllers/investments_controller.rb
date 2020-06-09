@@ -1,5 +1,4 @@
 class InvestmentsController < ApplicationController
-    
     before_action :authorized
     
     def index
@@ -20,7 +19,7 @@ class InvestmentsController < ApplicationController
     def show
       set_client_inv
       if params[:client_id] && current_user.clients.include?(@client)
-        
+
             set_investment
             
         else
@@ -62,8 +61,7 @@ class InvestmentsController < ApplicationController
 
     def edit
         set_client_inv
-        if params[:client_id] && current_user.clients.include?(@client)
-            
+        if params[:client_id] && current_user.clients.include?(@client) 
             set_investment
             if @investment
             
@@ -75,7 +73,16 @@ class InvestmentsController < ApplicationController
     end
 
     def update
-        
+        set_client_inv
+        if params[:client_id] && current_user.clients.include?(@client)
+            set_investment
+            @investment.update(investment_params)
+            if @investment.save
+                redirect_to client_investments_path(@client)
+            else
+                render 'edit'
+            end
+        end
     end
         
     def destroy
