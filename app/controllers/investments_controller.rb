@@ -58,21 +58,18 @@ class InvestmentsController < ApplicationController
     
 
     def edit
+        set_investment
         set_client_inv
-        if params[:client_id] && current_user.clients.include?(@client) 
-            set_investment
-            if @investment
-            
-            render "edit"
+        if params[:client_id] && current_user.investments.include?(@investment) 
+           render "edit"
         else
-            redirect_to @investment
+            redirect_to '/welcome'
             end
         end
-    end
 
     def update
-        set_client_inv
-        if params[:client_id] && current_user.clients.include?(@client)
+        set_investment
+        if params[:client_id] && current_user.investments.include?(@investment)
             set_investment
             @investment.update(investment_params)
             if @investment.save
