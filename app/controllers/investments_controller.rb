@@ -17,9 +17,10 @@ class InvestmentsController < ApplicationController
     end
 
     def show
-      set_client_inv
-        if params[:client_id] && current_user.clients.include?(@client)
-            set_investment
+        set_investment
+        if current_user.investments.include?(@investment)
+            set_client_inv
+            render :show
         else
             redirect_to '/welcome'
         end
