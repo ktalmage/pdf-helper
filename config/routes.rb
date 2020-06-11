@@ -6,7 +6,8 @@ Rails.application.routes.draw do
       resources :investments 
     end
   resources :investments
-
+  
+  get 'reportables', to: 'investments#reportables'
   
   get 'login', to: 'sessions#new'
 
