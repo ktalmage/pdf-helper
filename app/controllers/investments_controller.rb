@@ -69,11 +69,13 @@ class InvestmentsController < ApplicationController
 
     def update
         set_investment
+        set_client_inv
         if params[:client_id] && current_user.investments.include?(@investment)
-            set_investment
+            
+           
             @investment.update(investment_params)
             if @investment.save
-                redirect_to client_investments_path(@client)
+                redirect_to client_investments_path(@client, @investments)
             else
                 render 'edit'
             end
