@@ -4,10 +4,8 @@ class InvestmentsController < ApplicationController
     before_action :set_client_inv, only: [:index, :edit, :update, :destroy]
     
     def index
-        
         if current_user.clients.include?(@client)
            if params[:client_id]
-            
                 @investments = @client.investments
             else
                 @investments = Investment.all
@@ -19,8 +17,7 @@ class InvestmentsController < ApplicationController
     end
 
     def show
-        
-        if current_user.investments.include?(@investment)
+        if inv_auth
             set_client_inv
             render :show
         else
@@ -58,21 +55,17 @@ class InvestmentsController < ApplicationController
         end
     end
     
-
     def edit
-        
-        if params[:client_id] && current_user.investments.include?(@investment) 
+        if inv_auth
            render "edit"
         else
             redirect_to '/welcome'
-            end
         end
+    end
 
     def update
         
-        if params[:client_id] && current_user.investments.include?(@investment)
-            
-           
+        if inv_auth
             @investment.update(investment_params)
             if @investment.save
                 redirect_to client_investments_path(@client, @investments)
@@ -105,5 +98,7 @@ class InvestmentsController < ApplicationController
         :st_capital,:mt_capital,:lt_capital)
     end
 
-
+    def inv_auth
+        params[:client_id] && current_user.investments.include?(@investment)
+    end
 end
