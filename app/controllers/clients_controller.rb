@@ -1,5 +1,6 @@
 class ClientsController < ApplicationController
-  before_action :set_client, only: [:show, :edit, :destroy]
+  before_action :user_client_check, only: [:show, :edit]
+  before_action :set_client, only: [:show, :edit, :update, :destroy]
   before_action :authorized
   
   def index
@@ -7,8 +8,6 @@ class ClientsController < ApplicationController
   end
   
   def show
-    
-    @client = current_user.clients.find_by(id: params[:id])
     if @client
       else
       redirect_to '/welcome'
@@ -16,21 +15,20 @@ class ClientsController < ApplicationController
   end
 
   def new
-    @client = Client.new
+    @client = current_user.clients.new
     @client.investments.build
   end
 
   def create
     @client = current_user.clients.new(client_params)
-    if @client.save
-    redirect_to @client
-    else
-      render :new
+      if @client.save
+        redirect_to @client
+      else
+        render :new
     end
   end
 
   def edit
-    @client = current_user.clients.find_by(id: params[:id])
     if @client
       else
       redirect_to '/welcome'
@@ -38,7 +36,6 @@ class ClientsController < ApplicationController
   end
 
   def update
-    set_client
     @client.update(client_params)
       if @client.valid? && current_user
       @client.save
@@ -56,14 +53,16 @@ class ClientsController < ApplicationController
 
   private
 
-  def set_user
-    @user = User.find(params[:id])
-  end
+ 
   def set_client
     @client = Client.find(params[:id])
   end
 
   def client_params
-    params.require(:client).permit(:name,:ein, :investment_attributes => [])
+    params.require(:client).permit(:name,:ein)
+  end
+
+  def user_client_check
+    @client = current_user.clients.find_by(id: params[:id])
   end
 end
