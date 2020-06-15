@@ -49,7 +49,6 @@ class InvestmentsController < ApplicationController
             if @investment.save
                 redirect_to @investment
             else
-        
                 render :new
             end
         end
