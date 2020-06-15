@@ -1,4 +1,4 @@
-<h1>Hi, <%= current_user.name %> Edit a Client: </h1>
+<h1>Hi, <%= current_user.name %></h1>
 <% if @client.errors.any? %>
   <div id="error_explanation">
     <h2 style="color: red;"><%= pluralize(@client.errors.count, "error") %> prohibited you from editing this client:</h2>
