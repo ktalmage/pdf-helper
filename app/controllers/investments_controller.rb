@@ -1,7 +1,7 @@
 class InvestmentsController < ApplicationController
     before_action :authorized
     before_action :set_investment, only: [:show, :edit, :update, :destroy]
-    before_action :set_client_inv, only: [:index, :edit, :update, :destroy]
+    before_action :set_client_inv, only: [:index, :new, :edit, :update, :destroy]
     
     def index
         if current_user.clients.include?(@client)
@@ -26,12 +26,12 @@ class InvestmentsController < ApplicationController
     end
 
     def new
+        
         if current_user.clients.include?(@client)
             if params[:client_id]
-            set_client_inv  
-            @investment = @client.investments.build
+                  @investment = @client.investments.build
             else
-            @investment = Investment.new
+                @investment = Investment.new
             end
         else
             redirect_to '/welcome'
