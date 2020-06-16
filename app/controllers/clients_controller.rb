@@ -17,6 +17,7 @@ class ClientsController < ApplicationController
   def new
     @client = current_user.clients.new
     @client.investments.build
+  
   end
 
   def create

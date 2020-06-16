@@ -26,8 +26,7 @@ class InvestmentsController < ApplicationController
     end
 
     def new
-        
-        if current_user.clients.include?(@client)
+      if current_user.clients.include?(@client)
             if params[:client_id]
                   @investment = @client.investments.build
             else

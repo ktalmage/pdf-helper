@@ -14,7 +14,7 @@ class Investment < ApplicationRecord
     validates_presence_of :mt_capital
     validates_presence_of :lt_capital
     
-    scope :reportable_loss, -> { where("ordinary_income < -2000000") }
+    scope :reportable_loss, -> { where("ordinary_income <= -2000000") }
 
     def total
         Investment.all.where(:id => self.id).pluck(:ordinary_income, :interest_income,:st_capital, 
@@ -26,9 +26,6 @@ class Investment < ApplicationRecord
             inv.total
         end
     end
-
-    
-  
 end
         
     
