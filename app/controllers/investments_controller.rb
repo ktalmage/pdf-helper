@@ -26,11 +26,15 @@ class InvestmentsController < ApplicationController
     end
 
     def new
-        if params[:client_id]
+        if current_user.clients.include?(@client)
+            if params[:client_id]
             set_client_inv  
-        @investment = @client.investments.build
-        else
+            @investment = @client.investments.build
+            else
             @investment = Investment.new
+            end
+        else
+            redirect_to '/welcome'
         end
     end
 

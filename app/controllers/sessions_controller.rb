@@ -21,8 +21,6 @@ skip_before_action :authorized, only: [:new, :create,:welcome]
     end
   end
 
-  
-    
   def login
   
   end
