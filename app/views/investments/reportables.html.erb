@@ -20,6 +20,7 @@ tr:nth-child(even) {
 </style>
 </head>
 <body>
+<% if @investments.exists?%>
 <h2>Reportable Transactions</h2>
 <p><%= link_to 'Welcome', welcome_path %></p>
 <table>
@@ -27,6 +28,7 @@ tr:nth-child(even) {
     <th>Investment</th>
     <th>Ordinary Income Subject to Reportable Loss Rules: </th>
   </tr>
+  
     <% @investments.each do |inv| %>
  <tbody>
   <tr>  
@@ -40,5 +42,8 @@ tr:nth-child(even) {
     <td><strong>Total</strong></td>
      <td><strong><%=number_to_currency(@investments.sum(:ordinary_income), :unit => "$")%></strong></td>
 </tr>
+<% else %>
+<h3><strong>No Reportable Losses</strong></h3>
+<% end %>
 </tfoot>
 </table>
