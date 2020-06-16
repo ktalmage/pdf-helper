@@ -82,6 +82,10 @@ class InvestmentsController < ApplicationController
         redirect_to client_investments_path(@client, @investments)
     end
 
+    def reportables
+       @investments = current_user.investments.reportable_loss
+    end
+
     private
 
     def set_investment

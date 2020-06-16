@@ -1,2 +1,44 @@
+<!DOCTYPE html>
+<html>
+<head>
+<style>
+.content-loader table {
+  font-family: arial, sans-serif;
+  border-collapse: collapse;
+  white-space: nowrap;
+}
+
+td, th {
+  border: 1px solid #dddddd;
+  text-align: center;
+  padding: 8px;
+}
+
+tr:nth-child(even) {
+  background-color: #dddddd;
+}
+</style>
+</head>
+<body>
 <h2>Reportable Transactions</h2>
- 
+<p><%= link_to 'Welcome', welcome_path %></p>
+<table>
+  <tr>
+    <th>Investment</th>
+    <th>Ordinary Income Subject to Reportable Loss Rules: </th>
+  </tr>
+    <% @investments.each do |inv| %>
+ <tbody>
+  <tr>  
+    <td><%=inv.name%></td>  
+    <td><%=number_to_currency(inv.ordinary_income, :unit => "$")%></td>
+    <% end %>
+ </tr>
+</tbody>
+<tfoot>
+ <tr>
+    <td><strong>Total</strong></td>
+     <td><strong><%=number_to_currency(@investments.sum(:ordinary_income), :unit => "$")%></strong></td>
+</tr>
+</tfoot>
+</table>
