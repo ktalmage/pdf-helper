@@ -31,8 +31,4 @@ end
     
 
     
-    # def my_url
-    #     rails_blob_path(@investment.file, disposition: "attachment")
-    # end
-    
 

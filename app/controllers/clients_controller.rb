@@ -24,8 +24,9 @@ class ClientsController < ApplicationController
 
   def create
     @client = current_user.clients.new(client_params)
+    
       if @client.save
-        redirect_to @client
+        redirect_to new_client_investment_path(@client)
       else
         render :new
     end

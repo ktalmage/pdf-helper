@@ -26,7 +26,7 @@ class InvestmentsController < ApplicationController
     end
 
     def new
-      if current_user.clients.include?(@client)
+      if current_user
             if params[:client_id]
                   @investment = @client.investments.build
             else
@@ -86,7 +86,9 @@ class InvestmentsController < ApplicationController
     end
 
     def reportables
-       @investments = current_user.investments.reportable_loss
+        
+        @investments = current_user.investments.reportable_loss
+        
     end
 
     private
