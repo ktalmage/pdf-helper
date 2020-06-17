@@ -11,7 +11,7 @@
 <% end %>
 
 <h3>Add a Client</h3>
-<%= form_with(model: [@user,@client] , local:true) do |f| %>
+<%= form_with(model: @client, local:true) do |f| %>
 <%= f.label :name %>
 <%= f.text_field :name %><br>
 <%= f.label :ein %>

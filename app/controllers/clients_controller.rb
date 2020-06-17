@@ -1,13 +1,15 @@
 class ClientsController < ApplicationController
   before_action :set_client, only: [:show, :edit, :update, :destroy]
+  before_action :user_client_check, only: [:show, :edit]
   before_action :authorized
   
   def index
+    
     @clients = current_user.clients.uniq
   end
   
   def show
-    @client = current_user.clients.find_by(id: params[:id])
+  
     if @client
       else
       redirect_to '/welcome'
@@ -17,7 +19,7 @@ class ClientsController < ApplicationController
   def new
     @client = current_user.clients.new
     @client.investments.build
-  
+    
   end
 
   def create
@@ -30,7 +32,7 @@ class ClientsController < ApplicationController
   end
 
   def edit
-    @client = current_user.clients.find_by(id: params[:id])
+   
     if @client
       else
       redirect_to '/welcome'
