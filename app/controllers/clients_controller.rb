@@ -4,8 +4,12 @@ class ClientsController < ApplicationController
   before_action :authorized
   
   def index
-    
-    @clients = current_user.clients.uniq
+    if params[:search]
+      @clients = current_user.clients.search(params[:search]).uniq
+    else
+       @clients = current_user.clients.uniq
+     
+    end
   end
   
   def show
@@ -19,7 +23,6 @@ class ClientsController < ApplicationController
   def new
     @client = current_user.clients.new
     @client.investments.build
-    
   end
 
   def create
@@ -64,7 +67,7 @@ class ClientsController < ApplicationController
   end
 
   def client_params
-    params.require(:client).permit(:name,:ein)
+    params.require(:client).permit(:name,:ein, :search)
   end
 
   def user_client_check

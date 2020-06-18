@@ -21,6 +21,7 @@ Rails.application.routes.draw do
 
   get 'authorized', to: 'sessions#page_requires_login'
 
+  get 'search', to: 'clients#index'
   
  
   root to: 'main#home'

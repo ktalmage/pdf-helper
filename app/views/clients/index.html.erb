@@ -31,6 +31,13 @@ tr:nth-child(even) {
   
   <% end %>
 </table><br>
+
+<%= form_tag '/search', method: :get do %>
+   <%= label_tag "Look Up Client Name" %>
+   <%= text_field_tag :search, params[:search]%>
+   <%= submit_tag "search", :name => nil %>
+<%end%>
+
 <% if logged_in? %>
 <%= link_to "Add a client", new_client_path %><br>
 <% end %>
