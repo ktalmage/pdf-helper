@@ -53,7 +53,7 @@ end
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
 gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 
-gem 'pdf-reader', '~> 2.1'
+gem 'pdf-reader', '1.1.1'
 
 gem 'bootstrap-sass', '~> 3.3', '>= 3.3.6'
 
@@ -71,6 +71,14 @@ gem "omniauth-github", '1.1.1'
 gem "activesupport", ">= 6.0.3.1"
 
 gem 'cancancan'
+
+gem 'pry'
+
+# gem 'pdftk-binary', '~> 0.0.1'
+
+# gem 'pdf-forms', '~> 1.2'
+
+# gem 'active_pdftk', git: "https://github.com/tcocca/active_pdftk.git"
 
 
 

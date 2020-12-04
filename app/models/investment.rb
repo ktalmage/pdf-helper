@@ -1,4 +1,9 @@
 class Investment < ApplicationRecord
+
+    require 'pdf-reader'
+    require 'open-uri'
+    require 'pry'
+    
     belongs_to :user
     belongs_to :client
     validates :name, uniqueness: true
@@ -26,6 +31,29 @@ class Investment < ApplicationRecord
             inv.total
         end
     end
+
+    def self.get_inv_data
+            io = open('https://s23.q4cdn.com/714267708/files/doc_downloads/PTP_307111_SAMPLEPARTNERA_K1_2018_FED.PDF')
+            receiver = PDF::Reader::RegisterReceiver.new
+            
+            reader = PDF::Reader.new(io)
+            reader.pages.each do |page|
+            if page.number == 5
+                page.walk(receiver)
+                receiver.callbacks.each do |cb|
+                   
+                    if cb.values.to_s =="show_text"
+                       
+                    cb[:args]
+                       
+                    end
+                end
+            end
+        end
+    end
+
+   
+
 end
         
     

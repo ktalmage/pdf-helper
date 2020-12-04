@@ -5,6 +5,7 @@ class InvestmentsController < ApplicationController
     
     def index
         if current_user.clients.include?(@client)
+            
            if params[:client_id]
                 @investments = @client.investments
             else

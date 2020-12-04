@@ -8,4 +8,6 @@ class Client < ApplicationRecord
     def self.search(search)
         where("LOWER(clients.name) LIKE :search", search: "%#{search.downcase}%")
     end
+
+   
 end

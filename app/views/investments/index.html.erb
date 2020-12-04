@@ -67,9 +67,14 @@ tr:nth-child(even) {
     </tr>
     </tfoot>
   </table>
-  
+  <%@investments.get_inv_data.each do |inv| %>
+  <% if inv.number == 5 %>
+  <div><%=inv.text.gsub!(/\n+/, '')%></div>
+  <% end %>
+  <%end %>
 <p><%= link_to("Reportable Transactions", reportables_path) %></p>
   
+
   
 
 
