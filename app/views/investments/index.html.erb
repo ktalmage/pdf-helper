@@ -37,7 +37,7 @@ tr:nth-child(even) {
     <th>Edit</th>
     <th>Delete</th>
     <th>Show</th>
-    <th>CSV</th>
+    
   </tr>
   <% @client.investments.each do |inv|%>
   <tbody>
@@ -54,6 +54,7 @@ tr:nth-child(even) {
     <td><p><%= link_to("Edit", edit_client_investment_path(@client,inv)) %></p></td>
     <td><p><%= link_to("Delete", client_investment_path(@client,inv), method: :delete, data:{confirm: "Are you Sure?"}) %></p></td>
     <td><p><%= link_to("Show", client_investment_path(@client,inv)) %></p></td>
+    
     <% end %>
     </tr>
     </tbody>
@@ -72,7 +73,7 @@ tr:nth-child(even) {
     </tfoot>
   </table>
   
-  
+  <%= link_to "Download CSV", client_investments_path(@client,@investments,format: "csv")%>
 <p><%= link_to("Reportable Transactions", reportables_path) %></p>
   
 

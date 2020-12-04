@@ -12,14 +12,14 @@ class InvestmentsController < ApplicationController
                 @investments = Investment.all
             
             end
-            
+            respond_to do |format|
+                format.html
+                format.csv { render plain: @investments.to_csv }
+            end
         else
             redirect_to '/welcome'
         end
-        respond_to do |format|
-            format.html
-            format.csv { render text: @investments.to_csv }
-        end
+        
     end
 
     def show
