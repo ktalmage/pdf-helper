@@ -5,7 +5,7 @@ Rails.application.routes.draw do
   resources :clients do
       resources :investments 
     end
-  resources :investments
+  resources :investments, only: :index
   
   get 'reportables', to: 'investments#reportables'
   

@@ -37,6 +37,7 @@ tr:nth-child(even) {
     <th>Edit</th>
     <th>Delete</th>
     <th>Show</th>
+    <th>CSV</th>
   </tr>
   <% @client.investments.each do |inv|%>
   <tbody>
@@ -49,6 +50,7 @@ tr:nth-child(even) {
     <td><%=number_to_currency(inv.mt_capital, :unit => "$")%></td>
     <td><%=number_to_currency(inv.lt_capital, :unit=> "$")%></td>
     <td><%=number_to_currency(inv.total, :unit => "$")%></td>
+    
     <td><p><%= link_to("Edit", edit_client_investment_path(@client,inv)) %></p></td>
     <td><p><%= link_to("Delete", client_investment_path(@client,inv), method: :delete, data:{confirm: "Are you Sure?"}) %></p></td>
     <td><p><%= link_to("Show", client_investment_path(@client,inv)) %></p></td>
@@ -57,7 +59,9 @@ tr:nth-child(even) {
     </tbody>
     <tfoot>
     <tr>
+    
     <td colspan="2"><strong>Totals</strong></td>
+  
     <td><strong><%=number_to_currency(@investments.sum(:ordinary_income), :unit => "$")%></strong></td>
     <td><strong><%=number_to_currency(@investments.sum(:interest_income), :unit => "$")%></strong></td>
     <td><strong><%=number_to_currency(@investments.sum(:st_capital), :unit => "$")%></strong></td>
@@ -67,11 +71,8 @@ tr:nth-child(even) {
     </tr>
     </tfoot>
   </table>
-  <%@investments.get_inv_data.each do |inv| %>
-  <% if inv.number == 5 %>
-  <div><%=inv.text.gsub!(/\n+/, '')%></div>
-  <% end %>
-  <%end %>
+  
+  
 <p><%= link_to("Reportable Transactions", reportables_path) %></p>
   
 
